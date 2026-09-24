@@ -1,156 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<title>FreePS - Free Online Photo Editor & PSD Drawing Tool</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<meta name="description" content="FreePS is a powerful, free online photo editor and image drawing tool. Edit PSD, PNG, and JPG files directly in your web browser with layers, filters, and drawing brushes. No download required." />
-	<meta name="keywords" content="online photo editor, free photoshop alternative, psd viewer, online drawing, image editor online, layer photo editor, html5 canvas editor" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
-	<link rel="icon" sizes="192x192" href="images/favicon.png">
+  <meta charset="UTF-8" />
+  <title>FreePS - Free Online Photo Editor & PSD Drawing Tool</title>
+  <meta name="description" content="FreePS is a powerful, free web-based photo editor and drawing tool. Edit photos, manage layers, and draw in your browser without software installation." />
+  <meta name="keywords" content="online photo editor, free photoshop alternative, in-browser drawing tool, psd viewer, layer photo editor" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" sizes="192x192" href="images/favicon.png" />
+  <link rel="canonical" href="https://psdrawing.com/" />
 
-	<!-- 修正为您的正式域名 -->
-	<link rel="canonical" href="https://psdrawing.com/">
-	<meta itemprop="name" content="FreePS - Free Online Photo Editor" />
-	<meta itemprop="description" content="FreePS is a free online photo editor using HTML5. Edit, adjust, and draw directly in your browser without installing anything." />
+  <!-- OpenGraph -->
+  <meta property="og:title" content="FreePS - Free Online Photo Editor" />
+  <meta property="og:description" content="Edit images and drawings directly in your web browser with layers, filters, and brushes. 100% Free." />
+  <meta property="og:url" content="https://psdrawing.com/" />
+  <meta property="og:type" content="website" />
 
-	<!-- Twitter 社交卡片 -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="FreePS - Free Online Photo Editor" />
-	<meta name="twitter:description" content="Edit images and drawings directly in your browser with layers, filters, and brushes." />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1e29;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #2e3444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
 
-	<!-- OpenGraph (Facebook / 社交平台) -->
-	<meta property="og:title" content="FreePS - Free Online Photo Editor" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://psdrawing.com/" />
-	<meta property="og:description" content="Free web-based photo and image editor supporting layers, drawing, and retouching." />
-	<meta property="og:site_name" content="FreePS" />
+    /* 顶部导航 */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      margin-left: 20px;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
 
-	<!-- Google 结构化数据 (帮助识别网页软件) -->
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "WebApplication",
-	  "name": "FreePS",
-	  "url": "https://psdrawing.com/",
-	  "applicationCategory": "DesignApplication",
-	  "operatingSystem": "All",
-	  "offers": {
-	    "@type": "Offer",
-	    "price": "0",
-	    "priceCurrency": "USD"
-	  },
-	  "description": "Free web-based photo and image editor supporting layers, drawing, and photo retouching."
-	}
-	</script>
+    /* Hero 首屏 */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 40%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 19px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6);
+    }
 
-	<script src="dist/bundle.js" async></script>
+    /* 模拟演示界面卡片 */
+    .preview-box {
+      max-width: 1000px;
+      margin: 20px auto 70px;
+      padding: 0 20px;
+    }
+    .preview-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+    }
+    .preview-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    /* 特性网格 */
+    .features {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+    }
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* FAQ 区域 (SEO 核心) */
+    .faq {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .faq h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .faq-item h4 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* 页脚 */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 60px;
+    }
+    .footer-links {
+      margin-top: 10px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+    }
+  </style>
 </head>
-
 <body>
 
-	<div class="wrapper">
+  <!-- 顶部导航 -->
+  <header>
+    <div class="logo">🎨 Free<span>PS</span></div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="/editor.html" style="color: var(--accent); font-weight: 600;">Open Editor →</a>
+    </nav>
+  </header>
 
-		<nav aria-label="Main Menu" class="main_menu" id="main_menu"></nav>
+  <!-- 核心介绍区 (Hero) -->
+  <main>
+    <section class="hero">
+      <div class="badge">✨ 100% Free & No Download Needed</div>
+      <h1>Powerful In-Browser Image Editing & Drawing</h1>
+      <p>
+        FreePS gives you Photoshop-like capabilities directly inside your browser. Adjust photos, create digital art, and manage layers without installing complex software.
+      </p>
+      <a href="/editor.html" class="cta-btn">🚀 Launch Online Editor</a>
+    </section>
 
-		<div class="submenu">
-			<a class="logo" href="#">FreePS</a>
-			<div class="block attributes" id="action_attributes"></div>
+    <!-- 预览卡片 -->
+    <section class="preview-box">
+      <div class="preview-card">
+        <p>Ready to edit? Click below to enter the full-screen canvas workstation.</p>
+        <a href="/editor.html" style="color: #60a5fa; font-weight: 600; text-decoration: underline;">Go to Editor Workspace (editor.html)</a>
+      </div>
+    </section>
 
-			<!-- 顶部法务与帮助链接 (方便审核与用户查阅) -->
-			<div style="margin-left: auto; display: flex; align-items: center; gap: 12px; padding-right: 15px; font-size: 13px;">
-				<a href="/privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
-				<a href="/terms.html" style="color: #888; text-decoration: none;">Terms</a>
-			</div>
+    <!-- 核心功能介绍 -->
+    <section class="features" id="features">
+      <div class="feature-card">
+        <div class="feature-icon">📑</div>
+        <h3>Layer Management</h3>
+        <p>Organize designs with full layer support. Create, hide, blend, adjust opacity, and reorder layers effortlessly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖌️</div>
+        <h3>Creative Drawing Tools</h3>
+        <p>Equipped with customizable brushes, erasers, marquee selectors, clone stamps, color pickers, and text tools.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Ultra-Fast Performance</h3>
+        <p>Runs smoothly via HTML5 Canvas and modern web standards. No waiting for heavy software to boot up.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Privacy-Friendly</h3>
+        <p>All operations are processed right inside your local browser. Your private pictures are never uploaded to remote servers.</p>
+      </div>
+    </section>
 
-			<button class="undo_button" id="undo_button" type="button">
-				<span class="sr_only">Undo</span>
-			</button>
-		</div>
+    <!-- 常见问答 FAQ -->
+    <section class="faq" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h4>Is FreePS completely free to use?</h4>
+        <p>Yes. FreePS is free for personal, creative, and commercial image editing purposes.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need to install any apps or browser extensions?</h4>
+        <p>Not at all. FreePS works directly in any standard browser (Chrome, Edge, Safari, Firefox) on Windows, macOS, or Linux.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Are my images safe and private?</h4>
+        <p>Yes. FreePS executes entirely on client-side technology. Your drawings and uploaded files remain securely on your device.</p>
+      </div>
+    </section>
+  </main>
 
-		<div class="sidebar_left" id="tools_container"></div>
+  <!-- 页脚与法务链接 -->
+  <footer>
+    <p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/editor.html">Online Editor</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:support@psdrawing.com">Contact Us</a>
+    </div>
+  </footer>
 
-		<div class="middle_area" id="middle_area">
-
-			<canvas class="ruler_left" id="ruler_left"></canvas>
-			<canvas class="ruler_top" id="ruler_top"></canvas>
-
-			<div class="main_wrapper" id="main_wrapper">
-				<div class="canvas_wrapper" id="canvas_wrapper">
-					<div id="mouse"></div>
-					<div class="transparent-grid" id="canvas_minipaint_background"></div>
-					<canvas id="canvas_minipaint">
-						<div class="trn error">
-							Your browser does not support canvas or JavaScript is not enabled.
-						</div>
-					</canvas>
-				</div>
-			</div>
-		</div>
-
-		<div class="sidebar_right">
-			<div class="preview block">
-				<h2 class="trn toggle" data-target="toggle_preview">Preview</h2>
-				<div id="toggle_preview"></div>
-			</div>
-
-			<div class="colors block">
-				<h2 class="trn toggle" data-target="toggle_colors">Colors</h2>
-				<div class="content" id="toggle_colors"></div>
-			</div>
-
-			<div class="block" id="info_base">
-				<h2 class="trn toggle toggle-full" data-target="toggle_info">Information</h2>
-				<div class="content" id="toggle_info"></div>
-			</div>
-
-			<div class="details block" id="details_base">
-				<h2 class="trn toggle toggle-full" data-target="toggle_details">Layer details</h2>
-				<div class="content details-content" id="toggle_details"></div>
-			</div>
-
-			<div class="layers block">
-				<h2 class="trn">Layers</h2>
-				<div class="content" id="layers_base"></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="mobile_menu">
-		<button class="left_mobile_menu" id="left_mobile_menu_button" type="button">
-			<span class="sr_only">Toggle Menu</span>
-		</button>
-		<button class="right_mobile_menu" id="mobile_menu_button" type="button">
-			<span class="sr_only">Toggle Menu</span>
-		</button>
-	</div>
-	<div class="hidden" id="tmp"></div>
-	<div id="popups"></div>
-
-	<!-- 网站 SEO 介绍与底部法务信息 (供搜索引擎抓取与合规展示) -->
-	<section style="background: #1e1e1e; color: #bbb; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; border-top: 1px solid #333;">
-		<div style="max-width: 960px; margin: 0 auto;">
-			<h2 style="color: #fff; font-size: 22px; margin-bottom: 12px;">About FreePS - Free Online Photo Editor</h2>
-			<p>FreePS is an in-browser graphics editor designed for editing photos, creating digital artwork, and sketching without installing heavy software. It runs entirely on client-side web technologies, providing quick and responsive access to layers, brush adjustments, filters, and standard image manipulation tools.</p>
-			
-			<h3 style="color: #fff; font-size: 16px; margin-top: 20px;">Features</h3>
-			<ul style="padding-left: 20px;">
-				<li><strong>Layer Manipulation:</strong> Create, hide, blend, and organize multiple layers.</li>
-				<li><strong>Creative Drawing Tools:</strong> Adjustable brushes, erasers, text tools, and color pickers.</li>
-				<li><strong>No Installation Needed:</strong> Works directly in any modern browser on desktop and mobile.</li>
-			</ul>
-
-			<div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; font-size: 13px; text-align: center; color: #777;">
-				<p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
-				<p>
-					<a href="/privacy.html" style="color: #999; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
-					<a href="/terms.html" style="color: #999; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
-					<a href="mailto:support@psdrawing.com" style="color: #999; text-decoration: none; margin: 0 10px;">Contact Us</a>
-				</p>
-			</div>
-		</div>
-	</section>
 </body>
-
 </html>
