@@ -84,6 +84,31 @@
 	</div>
 	<div class="hidden" id="tmp"></div>
 	<div id="popups"></div>
+
+	<!-- 自动将“关于”弹窗中的联系方式替换为您自己的 -->
+	<script>
+		const observer = new MutationObserver(() => {
+			const popupBox = document.getElementById('popups') || document.body;
+			if (!popupBox) return;
+
+			// 替换链接与文本
+			popupBox.querySelectorAll('a').forEach(link => {
+				// 替换原邮箱
+				if (link.href.includes('lovezww2011@gmail.com') || link.innerText.includes('lovezww2011@gmail.com')) {
+					link.href = 'mailto:kkh258369@gmail.com';
+					link.innerText = 'kkh258369@gmail.com';
+				}
+				// 替换原网址
+				if (link.href.includes('freeps.org') || link.innerText.includes('freeps.org')) {
+					link.href = 'https://www.psdrawing.com/';
+					link.innerText = 'https://www.psdrawing.com/';
+				}
+			});
+		});
+
+		// 持续监听弹窗出现
+		observer.observe(document.body, { childList: true, subtree: true });
+	</script>
 </body>
 
 </html>
