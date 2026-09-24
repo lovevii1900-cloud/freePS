@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FreePS - Free Online Photo Editor & PSD Drawing Tool</title>
-  <meta name="description" content="FreePS is a powerful, free web-based photo editor and drawing tool. Edit photos, manage layers, and draw in your browser without software installation." />
+  <title id="meta-title">FreePS - Free Online Photo Editor & PSD Drawing Tool</title>
+  <meta name="description" id="meta-desc" content="FreePS is a powerful, free web-based photo editor and drawing tool. Edit photos, manage layers, and draw in your browser without software installation." />
   <meta name="keywords" content="online photo editor, free photoshop alternative, in-browser drawing tool, psd viewer, layer photo editor" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" sizes="192x192" href="images/favicon.png" />
@@ -53,18 +53,37 @@
       gap: 8px;
     }
     .logo span { color: var(--accent); }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
     nav a {
       color: var(--text-muted);
-      margin-left: 20px;
       font-size: 15px;
       transition: color 0.2s;
     }
     nav a:hover { color: #fff; }
 
+    /* 语言选择下拉菜单 */
+    .lang-selector select {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+    }
+    .lang-selector select:hover {
+      border-color: var(--accent);
+    }
+
     /* Hero 首屏 */
     .hero {
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 70px 20px 50px;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -80,8 +99,8 @@
       border: 1px solid rgba(59, 130, 246, 0.3);
     }
     .hero h1 {
-      font-size: 48px;
-      line-height: 1.2;
+      font-size: 46px;
+      line-height: 1.25;
       font-weight: 800;
       margin-bottom: 20px;
       background: linear-gradient(135deg, #ffffff 40%, #9ca3af 100%);
@@ -89,9 +108,9 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 19px;
+      font-size: 18px;
       color: var(--text-muted);
-      margin-bottom: 36px;
+      margin-bottom: 34px;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
@@ -115,31 +134,31 @@
       box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6);
     }
 
-    /* 模拟演示界面卡片 */
+    /* 快捷入口卡片 */
     .preview-box {
       max-width: 1000px;
-      margin: 20px auto 70px;
+      margin: 10px auto 60px;
       padding: 0 20px;
     }
     .preview-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 30px;
+      padding: 24px;
       text-align: center;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
     .preview-card p {
       color: var(--text-muted);
       font-size: 15px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     /* 特性网格 */
     .features {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 30px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
@@ -164,16 +183,16 @@
       color: var(--text-muted);
     }
 
-    /* FAQ 区域 (SEO 核心) */
+    /* FAQ 区域 */
     .faq {
       max-width: 800px;
-      margin: 60px auto;
+      margin: 50px auto;
       padding: 0 20px;
     }
     .faq h2 {
       text-align: center;
-      font-size: 32px;
-      margin-bottom: 30px;
+      font-size: 30px;
+      margin-bottom: 26px;
       color: #fff;
     }
     .faq-item {
@@ -213,94 +232,291 @@
     .footer-links a:hover { color: #fff; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 34px; }
-      .hero p { font-size: 16px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 15px; }
+      header { flex-direction: column; gap: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 顶部导航 -->
+  <!-- 顶部导航与语言切换 -->
   <header>
     <div class="logo">🎨 Free<span>PS</span></div>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#faq">FAQ</a>
-      <a href="/editor.html" style="color: var(--accent); font-weight: 600;">Open Editor →</a>
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="/editor.html" style="color: var(--accent); font-weight: 600;" data-i18n="nav_editor">Open Editor →</a>
+      
+      <!-- 多语言选择框 -->
+      <div class="lang-selector">
+        <select id="langSelect" onchange="switchLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="zh">简体中文</option>
+          <option value="zh_tw">繁體中文</option>
+          <option value="es">Español</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </nav>
   </header>
 
-  <!-- 核心介绍区 (Hero) -->
+  <!-- 核心介绍区 -->
   <main>
     <section class="hero">
-      <div class="badge">✨ 100% Free & No Download Needed</div>
-      <h1>Powerful In-Browser Image Editing & Drawing</h1>
-      <p>
+      <div class="badge" data-i18n="hero_badge">✨ 100% Free & No Download Needed</div>
+      <h1 data-i18n="hero_title">Powerful In-Browser Image Editing & Drawing</h1>
+      <p data-i18n="hero_desc">
         FreePS gives you Photoshop-like capabilities directly inside your browser. Adjust photos, create digital art, and manage layers without installing complex software.
       </p>
-      <a href="/editor.html" class="cta-btn">🚀 Launch Online Editor</a>
+      <a href="/editor.html" class="cta-btn" data-i18n="cta_btn">🚀 Launch Online Editor</a>
     </section>
 
-    <!-- 预览卡片 -->
+    <!-- 快速启动提示卡 -->
     <section class="preview-box">
       <div class="preview-card">
-        <p>Ready to edit? Click below to enter the full-screen canvas workstation.</p>
-        <a href="/editor.html" style="color: #60a5fa; font-weight: 600; text-decoration: underline;">Go to Editor Workspace (editor.html)</a>
+        <p data-i18n="preview_tip">Ready to edit? Click below to enter the full-screen canvas workstation.</p>
+        <a href="/editor.html" style="color: #60a5fa; font-weight: 600; text-decoration: underline;" data-i18n="preview_link">Go to Fullscreen Workstation (editor.html)</a>
       </div>
     </section>
 
-    <!-- 核心功能介绍 -->
+    <!-- 核心特性 -->
     <section class="features" id="features">
       <div class="feature-card">
         <div class="feature-icon">📑</div>
-        <h3>Layer Management</h3>
-        <p>Organize designs with full layer support. Create, hide, blend, adjust opacity, and reorder layers effortlessly.</p>
+        <h3 data-i18n="feat_1_title">Layer Management</h3>
+        <p data-i18n="feat_1_desc">Organize designs with full layer support. Create, hide, blend, adjust opacity, and reorder layers effortlessly.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🖌️</div>
-        <h3>Creative Drawing Tools</h3>
-        <p>Equipped with customizable brushes, erasers, marquee selectors, clone stamps, color pickers, and text tools.</p>
+        <h3 data-i18n="feat_2_title">Creative Drawing Tools</h3>
+        <p data-i18n="feat_2_desc">Equipped with customizable brushes, erasers, marquee selectors, clone stamps, color pickers, and text tools.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
-        <h3>Ultra-Fast Performance</h3>
-        <p>Runs smoothly via HTML5 Canvas and modern web standards. No waiting for heavy software to boot up.</p>
+        <h3 data-i18n="feat_3_title">Ultra-Fast Performance</h3>
+        <p data-i18n="feat_3_desc">Runs smoothly via HTML5 Canvas and modern web standards. No waiting for heavy software to boot up.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <h3>Privacy-Friendly</h3>
-        <p>All operations are processed right inside your local browser. Your private pictures are never uploaded to remote servers.</p>
+        <h3 data-i18n="feat_4_title">Privacy-Friendly</h3>
+        <p data-i18n="feat_4_desc">All operations are processed right inside your local browser. Your private pictures are never uploaded to remote servers.</p>
       </div>
     </section>
 
-    <!-- 常见问答 FAQ -->
+    <!-- FAQ 问答 -->
     <section class="faq" id="faq">
-      <h2>Frequently Asked Questions</h2>
+      <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
       <div class="faq-item">
-        <h4>Is FreePS completely free to use?</h4>
-        <p>Yes. FreePS is free for personal, creative, and commercial image editing purposes.</p>
+        <h4 data-i18n="faq_q1">Is FreePS completely free to use?</h4>
+        <p data-i18n="faq_a1">Yes. FreePS is free for personal, creative, and commercial image editing purposes.</p>
       </div>
       <div class="faq-item">
-        <h4>Do I need to install any apps or browser extensions?</h4>
-        <p>Not at all. FreePS works directly in any standard browser (Chrome, Edge, Safari, Firefox) on Windows, macOS, or Linux.</p>
+        <h4 data-i18n="faq_q2">Do I need to install any apps or browser extensions?</h4>
+        <p data-i18n="faq_a2">Not at all. FreePS works directly in any standard browser (Chrome, Edge, Safari, Firefox) on Windows, macOS, or Linux.</p>
       </div>
       <div class="faq-item">
-        <h4>Are my images safe and private?</h4>
-        <p>Yes. FreePS executes entirely on client-side technology. Your drawings and uploaded files remain securely on your device.</p>
+        <h4 data-i18n="faq_q3">Are my images safe and private?</h4>
+        <p data-i18n="faq_a3">Yes. FreePS executes entirely on client-side technology. Your drawings and uploaded files remain securely on your device.</p>
       </div>
     </section>
   </main>
 
-  <!-- 页脚与法务链接 -->
+  <!-- 页脚 -->
   <footer>
     <p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
     <div class="footer-links">
-      <a href="/editor.html">Online Editor</a>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Service</a>
+      <a href="/editor.html" data-i18n="footer_editor">Online Editor</a>
+      <a href="/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="/terms.html" data-i18n="footer_terms">Terms of Service</a>
       <a href="mailto:support@psdrawing.com">Contact Us</a>
     </div>
   </footer>
+
+  <!-- 多语言动态切换脚本 -->
+  <script>
+    const translations = {
+      en: {
+        nav_features: "Features",
+        nav_faq: "FAQ",
+        nav_editor: "Open Editor →",
+        hero_badge: "✨ 100% Free & No Download Needed",
+        hero_title: "Powerful In-Browser Image Editing & Drawing",
+        hero_desc: "FreePS gives you Photoshop-like capabilities directly inside your browser. Adjust photos, create digital art, and manage layers without installing complex software.",
+        cta_btn: "🚀 Launch Online Editor",
+        preview_tip: "Ready to edit? Click below to enter the full-screen canvas workstation.",
+        preview_link: "Go to Fullscreen Workstation (editor.html)",
+        feat_1_title: "Layer Management",
+        feat_1_desc: "Organize designs with full layer support. Create, hide, blend, adjust opacity, and reorder layers effortlessly.",
+        feat_2_title: "Creative Drawing Tools",
+        feat_2_desc: "Equipped with customizable brushes, erasers, marquee selectors, clone stamps, color pickers, and text tools.",
+        feat_3_title: "Ultra-Fast Performance",
+        feat_3_desc: "Runs smoothly via HTML5 Canvas and modern web standards. No waiting for heavy software to boot up.",
+        feat_4_title: "Privacy-Friendly",
+        feat_4_desc: "All operations are processed right inside your local browser. Your private pictures are never uploaded to remote servers.",
+        faq_title: "Frequently Asked Questions",
+        faq_q1: "Is FreePS completely free to use?",
+        faq_a1: "Yes. FreePS is free for personal, creative, and commercial image editing purposes.",
+        faq_q2: "Do I need to install any apps or extensions?",
+        faq_a2: "Not at all. FreePS works directly in any modern browser on Windows, macOS, and Linux.",
+        faq_q3: "Are my images safe and private?",
+        faq_a3: "Yes. FreePS executes entirely on client-side technology. Your drawings and files stay on your device.",
+        footer_editor: "Online Editor",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Service"
+      },
+      zh: {
+        nav_features: "功能特点",
+        nav_faq: "常见问题",
+        nav_editor: "打开编辑器 →",
+        hero_badge: "✨ 100% 免费 · 无需下载安装",
+        hero_title: "强大便捷的网页在线修图与绘画工具",
+        hero_desc: "FreePS 让您直接在浏览器中享受媲美 Photoshop 的图片编辑体验。无需安装庞大软件，轻松实现修图、画图、调色与多图层处理。",
+        cta_btn: "🚀 立即进入在线工作台",
+        preview_tip: "准备好了吗？点击下方按钮直接进入全屏无干扰工作区。",
+        preview_link: "进入全屏工作台 (editor.html)",
+        feat_1_title: "图层管理体系",
+        feat_1_desc: "支持完整图层操作，自由新建、隐藏、调换图层顺序，并随意调节透明度与混合选项。",
+        feat_2_title: "丰富创作绘图工具",
+        feat_2_desc: "配备可自定义画笔、橡皮擦、选区工具、仿制图章、吸管吸色与文字排版工具。",
+        feat_3_title: "极速流畅响应",
+        feat_3_desc: "基于 HTML5 Canvas 纯前端技术构建，即开即用，无需漫长的软件启动等待。",
+        feat_4_title: "隐私安全保护",
+        feat_4_desc: "所有图片处理完全在您的本地浏览器中完成，图片数据绝不上传云端，隐私无忧。",
+        faq_title: "常见问题与解答",
+        faq_q1: "FreePS 是完全免费的吗？",
+        faq_a1: "是的，无论个人使用还是商业修图创作，FreePS 均完全免费开放。",
+        faq_q2: "我需要下载客户端或浏览器插件吗？",
+        faq_a2: "完全不需要。只需使用 Chrome、Edge、Safari 等主流浏览器直接访问即可使用。",
+        faq_q3: "我的图片上传后安全吗？",
+        faq_a3: "非常安全。所有图像数据均在您的本地设备内存中实时处理，绝不上传至任何服务器。",
+        footer_editor: "在线编辑器",
+        footer_privacy: "隐私政策",
+        footer_terms: "服务条款"
+      },
+      zh_tw: {
+        nav_features: "功能特色",
+        nav_faq: "常見問題",
+        nav_editor: "開啟編輯器 →",
+        hero_badge: "✨ 100% 免費 · 無須下載安裝",
+        hero_title: "強大便捷的瀏覽器線上修圖與繪圖工具",
+        hero_desc: "FreePS 讓您直接在瀏覽器中獲得媲美 Photoshop 的圖片編輯體驗。無須安裝肥大軟體，輕鬆實現修圖、繪圖與多圖層處理。",
+        cta_btn: "🚀 立即進入線上工作台",
+        preview_tip: "準備好了嗎？點擊下方按鈕直接進入全螢幕工作區。",
+        preview_link: "進入全螢幕工作台 (editor.html)",
+        feat_1_title: "圖層管理功能",
+        feat_1_desc: "支援完整圖層操作，自由建立、隱藏、調換順序，並輕鬆調整透明度與混合選項。",
+        feat_2_title: "豐富繪圖工具",
+        feat_2_desc: "具備多樣化筆刷、橡皮擦、選取工具、仿製印章、滴管吸色與文字排版功能。",
+        feat_3_title: "極速流暢反應",
+        feat_3_desc: "採用 HTML5 Canvas 核心技術，即開即用，免去傳統繪圖軟體的漫長啟動等待。",
+        feat_4_title: "隱私安全保障",
+        feat_4_desc: "所有圖片運算完全在您的本機瀏覽器內完成，資料絕不上傳伺服器，安全無虞。",
+        faq_title: "常見問題解答",
+        faq_q1: "FreePS 是完全免費的嗎？",
+        faq_a1: "是的，無論個人日常修圖或商業創作，FreePS 皆完全免費。",
+        faq_q2: "我需要下載軟體或外掛程式嗎？",
+        faq_a2: "完全不用。只要使用 Chrome、Edge 或 Safari 等主流瀏覽器即可隨時開啟。",
+        faq_q3: "我的圖片資料安全嗎？",
+        faq_a3: "非常安全。所有圖像均在您的本機電腦中即時運算，絕不會傳送至遠端伺服器。",
+        footer_editor: "線上編輯器",
+        footer_privacy: "隱私政策",
+        footer_terms: "服務條款"
+      },
+      es: {
+        nav_features: "Funciones",
+        nav_faq: "Preguntas Frecuentes",
+        nav_editor: "Abrir Editor →",
+        hero_badge: "✨ 100% Gratis y Sin Descargas",
+        hero_title: "Potente Editor de Fotos y Dibujo en Línea",
+        hero_desc: "FreePS te brinda funciones avanzadas similares a Photoshop directamente en tu navegador web. Edita imágenes y gestiona capas sin instalar programas pesados.",
+        cta_btn: "🚀 Iniciar Editor en Línea",
+        preview_tip: "¿Listo para editar? Haz clic abajo para entrar al área de trabajo en pantalla completa.",
+        preview_link: "Ir al Área de Trabajo (editor.html)",
+        feat_1_title: "Gestión de Capas",
+        feat_1_desc: "Organiza tus diseños con soporte completo de capas. Crea, oculta, mezcla y reordena capas fácilmente.",
+        feat_2_title: "Herramientas de Dibujo",
+        feat_2_desc: "Pinceles personalizables, borradores, herramientas de selección, tampón de clonar y texto.",
+        feat_3_title: "Rendimiento Ultrarrápido",
+        feat_3_desc: "Funciona fluido con HTML5 Canvas sin esperar a que carguen pesados programas de escritorio.",
+        feat_4_title: "100% Privado y Seguro",
+        feat_4_desc: "El procesamiento se realiza localmente en tu navegador. Tus fotos nunca se suben a ningún servidor.",
+        faq_title: "Preguntas Frecuentes",
+        faq_q1: "¿FreePS es totalmente gratuito?",
+        faq_a1: "Sí, FreePS es 100% gratis para proyectos personales y comerciales.",
+        faq_q2: "¿Debo instalar alguna aplicación?",
+        faq_a2: "No, funciona directamente en cualquier navegador moderno en Windows, Mac y Linux.",
+        faq_q3: "¿Mis imágenes están protegidas?",
+        faq_a3: "Sí, todos los archivos se procesan únicamente en tu dispositivo local.",
+        footer_editor: "Editor en Línea",
+        footer_privacy: "Política de Privacidad",
+        footer_terms: "Términos de Servicio"
+      },
+      ja: {
+        nav_features: "機能紹介",
+        nav_faq: "よくある質問",
+        nav_editor: "エディターを開く →",
+        hero_badge: "✨ 完全無料・インストール不要",
+        hero_title: "ブラウザで動く本格オンライン画像編集・お絵描きツール",
+        hero_desc: "FreePSは、Photoshopのような写真編集や描画機能をブラウザ上で直接使えるWebアプリです。重いソフトをインストールすることなく、レイヤー操作や本格レタッチが可能です。",
+        cta_btn: "🚀 オンラインエディターを起動",
+        preview_tip: "編集を始めますか？下のボタンをクリックしてフルスクリーンの作業画面へ移動します。",
+        preview_link: "作業ワークステーションへ移動 (editor.html)",
+        feat_1_title: "レイヤー管理",
+        feat_1_desc: "複数レイヤーの追加、非表示、ブレンド、不透明度調整、順序変更にフル対応。",
+        feat_2_title: "多彩な描画ツール",
+        feat_2_desc: "ブラシ、消しゴム、選択ツール、コピースタンプ、スポイト、テキストツールを完備。",
+        feat_3_title: "快適・軽快な動作",
+        feat_3_desc: "HTML5 Canvas技術により起動待ち時間ゼロでスムーズに作業可能。",
+        feat_4_title: "プライバシー重視",
+        feat_4_desc: "すべての処理がお手元のブラウザ内で完結。画像がサーバーに送信されることはありません。",
+        faq_title: "よくあるご質問 (FAQ)",
+        faq_q1: "FreePSは本当に無料で使えますか？",
+        faq_a1: "はい、個人利用・商用利用を問わず完全無料でご利用いただけます。",
+        faq_q2: "アプリのインストールは必要ですか？",
+        faq_a2: "不要です。Chrome、Edge、Safariなどのブラウザから直接アクセスして使えます。",
+        faq_q3: "画像のプライバシーは安全ですか？",
+        faq_a3: "安全です。画像データはお使いの端末内でのみ処理され、外部に保存されません。",
+        footer_editor: "オンラインエディター",
+        footer_privacy: "プライバシーポリシー",
+        footer_terms: "利用規約"
+      }
+    };
+
+    function switchLanguage(lang) {
+      if (!translations[lang]) return;
+      const dict = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      localStorage.setItem('freeps_lang', lang);
+      document.getElementById('langSelect').value = lang;
+    }
+
+    // 页面加载时自动读取用户上次选择，或者根据浏览器语言自动适配
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('freeps_lang');
+      if (savedLang && translations[savedLang]) {
+        switchLanguage(savedLang);
+      } else {
+        const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (browserLang.startsWith('zh-tw') || browserLang.startsWith('zh-hk')) {
+          switchLanguage('zh_tw');
+        } else if (browserLang.startsWith('zh')) {
+          switchLanguage('zh');
+        } else if (browserLang.startsWith('es')) {
+          switchLanguage('es');
+        } else if (browserLang.startsWith('ja')) {
+          switchLanguage('ja');
+        } else {
+          switchLanguage('en');
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
