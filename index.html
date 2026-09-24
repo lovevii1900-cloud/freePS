@@ -2,34 +2,50 @@
 <html lang="en">
 
 <head>
-	<title>Free Online Photoshop | FreePS | Image Editor</title>
+	<title>FreePS - Free Online Photo Editor & PSD Drawing Tool</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<meta name="description" content="Online image editor, an open-source online image editor developed using HTML5+Vue technology, features functions such as image editing, brushes, filters, resizing, text, zooming, layers, and screenshots. This editor mimics most of the functions of Photoshop..." />
-	<meta name="keywords"
-		content="Photo, Photopea, Image, Picture, Transparent, Layer, Free, Edit, html5, Canvas, javascript, online, photoshop, gimp, Effects, Sharpen, Blur, Magic Eraser Tool, Clone Tool, Rotate, Resize, photoshop- Online, Online Tools, Tilt Offset, Sprite, Key point" />
+	<meta name="description" content="FreePS is a powerful, free online photo editor and image drawing tool. Edit PSD, PNG, and JPG files directly in your web browser with layers, filters, and drawing brushes. No download required." />
+	<meta name="keywords" content="online photo editor, free photoshop alternative, psd viewer, online drawing, image editor online, layer photo editor, html5 canvas editor" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
 	<link rel="icon" sizes="192x192" href="images/favicon.png">
-	<!-- <link rel="manifest" href="dist/manifest.json"> -->
-	<!-- Google -->
 
-	<link rel="canonical" href="https://freeps.org">
-	<meta itemprop="name" content="Online Photoshop Free Tool" />
-	<meta itemprop="description" content="Online Photoshop is a Free online photo editor using HTML5. Edit, adjust, and add effects online in your browser without installing anything..." />
-	<!-- Twitter -->
+	<!-- 修正为您的正式域名 -->
+	<link rel="canonical" href="https://psdrawing.com/">
+	<meta itemprop="name" content="FreePS - Free Online Photo Editor" />
+	<meta itemprop="description" content="FreePS is a free online photo editor using HTML5. Edit, adjust, and draw directly in your browser without installing anything." />
+
+	<!-- Twitter 社交卡片 -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Online Photoshop Free Tool" />
-	<meta name="twitter:description" content="Online Photoshop is a Free Cool online photo editor using HTML5..." />
-	<!-- Facebook, Pinterest -->
-	<meta property="og:title" content="Online Photoshop Free Tool" />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://freeps.org" />
-	<meta property="og:description" content="Online Photoshop is a Free Cool online photo editor using HTML5..." />
-	<meta property="og:site_name" content="Online Photoshop Free Tool" />
+	<meta name="twitter:title" content="FreePS - Free Online Photo Editor" />
+	<meta name="twitter:description" content="Edit images and drawings directly in your browser with layers, filters, and brushes." />
+
+	<!-- OpenGraph (Facebook / 社交平台) -->
+	<meta property="og:title" content="FreePS - Free Online Photo Editor" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://psdrawing.com/" />
+	<meta property="og:description" content="Free web-based photo and image editor supporting layers, drawing, and retouching." />
+	<meta property="og:site_name" content="FreePS" />
+
+	<!-- Google 结构化数据 (帮助识别网页软件) -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "WebApplication",
+	  "name": "FreePS",
+	  "url": "https://psdrawing.com/",
+	  "applicationCategory": "DesignApplication",
+	  "operatingSystem": "All",
+	  "offers": {
+	    "@type": "Offer",
+	    "price": "0",
+	    "priceCurrency": "USD"
+	  },
+	  "description": "Free web-based photo and image editor supporting layers, drawing, and photo retouching."
+	}
+	</script>
 
 	<script src="dist/bundle.js" async></script>
-
-
 </head>
 
 <body>
@@ -41,13 +57,19 @@
 		<div class="submenu">
 			<a class="logo" href="#">FreePS</a>
 			<div class="block attributes" id="action_attributes"></div>
+
+			<!-- 顶部法务与帮助链接 (方便审核与用户查阅) -->
+			<div style="margin-left: auto; display: flex; align-items: center; gap: 12px; padding-right: 15px; font-size: 13px;">
+				<a href="/privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+				<a href="/terms.html" style="color: #888; text-decoration: none;">Terms</a>
+			</div>
+
 			<button class="undo_button" id="undo_button" type="button">
 				<span class="sr_only">Undo</span>
 			</button>
 		</div>
 
 		<div class="sidebar_left" id="tools_container"></div>
-
 
 		<div class="middle_area" id="middle_area">
 
@@ -94,6 +116,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="mobile_menu">
 		<button class="left_mobile_menu" id="left_mobile_menu_button" type="button">
 			<span class="sr_only">Toggle Menu</span>
@@ -104,6 +127,30 @@
 	</div>
 	<div class="hidden" id="tmp"></div>
 	<div id="popups"></div>
+
+	<!-- 网站 SEO 介绍与底部法务信息 (供搜索引擎抓取与合规展示) -->
+	<section style="background: #1e1e1e; color: #bbb; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; border-top: 1px solid #333;">
+		<div style="max-width: 960px; margin: 0 auto;">
+			<h2 style="color: #fff; font-size: 22px; margin-bottom: 12px;">About FreePS - Free Online Photo Editor</h2>
+			<p>FreePS is an in-browser graphics editor designed for editing photos, creating digital artwork, and sketching without installing heavy software. It runs entirely on client-side web technologies, providing quick and responsive access to layers, brush adjustments, filters, and standard image manipulation tools.</p>
+			
+			<h3 style="color: #fff; font-size: 16px; margin-top: 20px;">Features</h3>
+			<ul style="padding-left: 20px;">
+				<li><strong>Layer Manipulation:</strong> Create, hide, blend, and organize multiple layers.</li>
+				<li><strong>Creative Drawing Tools:</strong> Adjustable brushes, erasers, text tools, and color pickers.</li>
+				<li><strong>No Installation Needed:</strong> Works directly in any modern browser on desktop and mobile.</li>
+			</ul>
+
+			<div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; font-size: 13px; text-align: center; color: #777;">
+				<p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
+				<p>
+					<a href="/privacy.html" style="color: #999; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+					<a href="/terms.html" style="color: #999; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
+					<a href="mailto:support@psdrawing.com" style="color: #999; text-decoration: none; margin: 0 10px;">Contact Us</a>
+				</p>
+			</div>
+		</div>
+	</section>
 </body>
 
 </html>
