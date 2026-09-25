@@ -2,113 +2,341 @@
 <html lang="en">
 
 <head>
-	<title>FreePS Editor - Free Online Photo Editor</title>
+	<title>FreePS Editor - Free Online Photo Editor & Drawing Tool</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
 	<link rel="icon" sizes="192x192" href="images/favicon.png">
+
+	<style>
+		/* 整体外层布局：左侧编辑器，右侧固定广告栏 */
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background: #1e1e1e;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		}
+		.app-layout {
+			display: flex;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+		.editor-main-area {
+			flex: 1;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* 右侧专业广告展示栏 (AdSense 160x600 摩天大楼广告位) */
+		.ad-sidebar {
+			width: 160px;
+			min-width: 160px;
+			height: 100vh;
+			background: #14161d;
+			border-left: 1px solid #2a2e3d;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 14px 6px;
+			box-sizing: border-box;
+			z-index: 90;
+		}
+		.ad-label {
+			font-size: 10px;
+			color: #6b7280;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+		}
+		.ad-placeholder {
+			width: 146px;
+			height: 600px;
+			background: #1b1e28;
+			border: 1px dashed #374151;
+			border-radius: 6px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #9ca3af;
+			font-size: 12px;
+			text-align: center;
+			padding: 12px;
+			box-sizing: border-box;
+		}
+		.ad-placeholder span {
+			font-size: 20px;
+			margin-bottom: 8px;
+		}
+		@media (max-width: 850px) {
+			.ad-sidebar { display: none !important; }
+		}
+
+		/* 新手开屏友好引导卡片 */
+		.welcome-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.75);
+			backdrop-filter: blur(4px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 99999;
+			transition: opacity 0.25s ease;
+		}
+		.welcome-card {
+			background: #1f232d;
+			border: 1px solid #374151;
+			border-radius: 14px;
+			padding: 32px 28px;
+			max-width: 440px;
+			width: 90%;
+			text-align: center;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+			position: relative;
+		}
+		.welcome-close {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			background: none;
+			border: none;
+			color: #9ca3af;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		.welcome-close:hover { color: #fff; }
+		.welcome-card h2 {
+			color: #fff;
+			font-size: 24px;
+			margin-bottom: 6px;
+		}
+		.welcome-card p {
+			color: #9ca3af;
+			font-size: 14px;
+			margin-bottom: 24px;
+		}
+		.welcome-actions {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			margin-bottom: 20px;
+		}
+		.btn-primary {
+			background: #3b82f6;
+			color: #fff;
+			border: none;
+			padding: 12px 20px;
+			border-radius: 8px;
+			font-size: 15px;
+			font-weight: 600;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			transition: background 0.2s;
+		}
+		.btn-primary:hover { background: #2563eb; }
+		.btn-secondary {
+			background: #2b313f;
+			color: #e5e7eb;
+			border: 1px solid #4b5563;
+			padding: 12px 20px;
+			border-radius: 8px;
+			font-size: 15px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+		.btn-secondary:hover { background: #374151; }
+		.welcome-tip {
+			font-size: 12px;
+			color: #6b7280;
+			border-top: 1px solid #2e3444;
+			padding-top: 14px;
+		}
+	</style>
+
 	<script src="dist/bundle.js" async></script>
 </head>
 
 <body>
 
-	<div class="wrapper">
+	<!-- 外层双栏布局 -->
+	<div class="app-layout">
 
-		<nav aria-label="Main Menu" class="main_menu" id="main_menu"></nav>
+		<!-- 左侧：修图核心应用区 -->
+		<div class="editor-main-area">
+			<div class="wrapper">
+				<nav aria-label="Main Menu" class="main_menu" id="main_menu"></nav>
 
-		<div class="submenu">
-			<a class="logo" href="/">FreePS</a>
-			<div class="block attributes" id="action_attributes"></div>
-			<!-- 返回落地页入口 -->
-			<a href="/" style="margin-left: auto; color: #888; font-size: 13px; text-decoration: none; padding-right: 15px; display: flex; align-items: center;">← Home</a>
-			<button class="undo_button" id="undo_button" type="button">
-				<span class="sr_only">Undo</span>
-			</button>
-		</div>
+				<div class="submenu">
+					<a class="logo" href="/">FreePS</a>
+					<div class="block attributes" id="action_attributes"></div>
+					<a href="/" style="margin-left: auto; color: #888; font-size: 13px; text-decoration: none; padding-right: 15px; display: flex; align-items: center;">← Home</a>
+					<button class="undo_button" id="undo_button" type="button">
+						<span class="sr_only">Undo</span>
+					</button>
+				</div>
 
-		<div class="sidebar_left" id="tools_container"></div>
+				<div class="sidebar_left" id="tools_container"></div>
 
-		<div class="middle_area" id="middle_area">
+				<div class="middle_area" id="middle_area">
+					<canvas class="ruler_left" id="ruler_left"></canvas>
+					<canvas class="ruler_top" id="ruler_top"></canvas>
 
-			<canvas class="ruler_left" id="ruler_left"></canvas>
-			<canvas class="ruler_top" id="ruler_top"></canvas>
-
-			<div class="main_wrapper" id="main_wrapper">
-				<div class="canvas_wrapper" id="canvas_wrapper">
-					<div id="mouse"></div>
-					<div class="transparent-grid" id="canvas_minipaint_background"></div>
-					<canvas id="canvas_minipaint">
-						<div class="trn error">
-							Your browser does not support canvas or JavaScript is not enabled.
+					<div class="main_wrapper" id="main_wrapper">
+						<div class="canvas_wrapper" id="canvas_wrapper">
+							<div id="mouse"></div>
+							<div class="transparent-grid" id="canvas_minipaint_background"></div>
+							<canvas id="canvas_minipaint">
+								<div class="trn error">
+									Your browser does not support canvas or JavaScript is not enabled.
+								</div>
+							</canvas>
 						</div>
-					</canvas>
+					</div>
+				</div>
+
+				<div class="sidebar_right">
+					<div class="preview block">
+						<h2 class="trn toggle" data-target="toggle_preview">Preview</h2>
+						<div id="toggle_preview"></div>
+					</div>
+
+					<div class="colors block">
+						<h2 class="trn toggle" data-target="toggle_colors">Colors</h2>
+						<div class="content" id="toggle_colors"></div>
+					</div>
+
+					<div class="block" id="info_base">
+						<h2 class="trn toggle toggle-full" data-target="toggle_info">Information</h2>
+						<div class="content" id="toggle_info"></div>
+					</div>
+
+					<div class="details block" id="details_base">
+						<h2 class="trn toggle toggle-full" data-target="toggle_details">Layer details</h2>
+						<div class="content details-content" id="toggle_details"></div>
+					</div>
+
+					<div class="layers block">
+						<h2 class="trn">Layers</h2>
+						<div class="content" id="layers_base"></div>
+					</div>
 				</div>
 			</div>
+
+			<div class="mobile_menu">
+				<button class="left_mobile_menu" id="left_mobile_menu_button" type="button">
+					<span class="sr_only">Toggle Menu</span>
+				</button>
+				<button class="right_mobile_menu" id="mobile_menu_button" type="button">
+					<span class="sr_only">Toggle Menu</span>
+				</button>
+			</div>
+			<div class="hidden" id="tmp"></div>
+			<div id="popups"></div>
 		</div>
 
-		<div class="sidebar_right">
-			<div class="preview block">
-				<h2 class="trn toggle" data-target="toggle_preview">Preview</h2>
-				<div id="toggle_preview"></div>
+		<!-- 右侧：固定广告位侧边栏 (预留 AdSense 160x600 规范位) -->
+		<aside class="ad-sidebar">
+			<div class="ad-label">Sponsor</div>
+			<div class="ad-placeholder">
+				<span>📢</span>
+				<strong>Ad Space</strong>
+				<p style="margin-top: 8px; font-size: 11px; line-height: 1.4; color: #6b7280;">Reserved for Google AdSense Display Unit (160x600)</p>
+			</div>
+		</aside>
+	</div>
+
+	<!-- 新手开屏友好指引弹窗 -->
+	<div class="welcome-overlay" id="welcomeOverlay">
+		<div class="welcome-card">
+			<button class="welcome-close" onclick="closeWelcome()">✕</button>
+			<h2>🎨 Welcome to FreePS</h2>
+			<p>Lightweight in-browser image editor & drawing canvas.</p>
+			
+			<div class="welcome-actions">
+				<button class="btn-primary" onclick="openImageFile()">
+					📂 Open Image from Computer
+				</button>
+				<button class="btn-secondary" onclick="closeWelcome()">
+					📄 New Blank Project (1024 × 768)
+				</button>
 			</div>
 
-			<div class="colors block">
-				<h2 class="trn toggle" data-target="toggle_colors">Colors</h2>
-				<div class="content" id="toggle_colors"></div>
-			</div>
-
-			<div class="block" id="info_base">
-				<h2 class="trn toggle toggle-full" data-target="toggle_info">Information</h2>
-				<div class="content" id="toggle_info"></div>
-			</div>
-
-			<div class="details block" id="details_base">
-				<h2 class="trn toggle toggle-full" data-target="toggle_details">Layer details</h2>
-				<div class="content details-content" id="toggle_details"></div>
-			</div>
-
-			<div class="layers block">
-				<h2 class="trn">Layers</h2>
-				<div class="content" id="layers_base"></div>
+			<div class="welcome-tip">
+				💡 Tip: You can also drag & drop any image here or press <strong>Ctrl+V</strong> to paste from clipboard.
 			</div>
 		</div>
 	</div>
 
-	<div class="mobile_menu">
-		<button class="left_mobile_menu" id="left_mobile_menu_button" type="button">
-			<span class="sr_only">Toggle Menu</span>
-		</button>
-		<button class="right_mobile_menu" id="mobile_menu_button" type="button">
-			<span class="sr_only">Toggle Menu</span>
-		</button>
-	</div>
-	<div class="hidden" id="tmp"></div>
-	<div id="popups"></div>
-
-	<!-- 自动将“关于”弹窗中的联系方式替换为您自己的 -->
+	<!-- 逻辑脚本：开屏交互 + 联系方式替换 -->
 	<script>
+		// 关闭引导弹窗
+		function closeWelcome() {
+			const overlay = document.getElementById('welcomeOverlay');
+			if (overlay) overlay.style.display = 'none';
+		}
+
+		// 从电脑选择图片并载入画布
+		function openImageFile() {
+			const fileInput = document.createElement('input');
+			fileInput.type = 'file';
+			fileInput.accept = 'image/*';
+			fileInput.onchange = (e) => {
+				const file = e.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = (event) => {
+						const img = new Image();
+						img.onload = () => {
+							// 触发 MiniPaint 载入图片机制
+							if (window.Layers) {
+								window.Layers.insert({
+									name: file.name,
+									type: 'image',
+									data: img
+								});
+							}
+						};
+						img.src = event.target.result;
+					};
+					reader.readAsDataURL(file);
+				}
+				closeWelcome();
+			};
+			fileInput.click();
+		}
+
+		// 自动替换“关于 (About)”弹窗中的联系邮箱和网址
 		const observer = new MutationObserver(() => {
 			const popupBox = document.getElementById('popups') || document.body;
 			if (!popupBox) return;
 
-			// 替换链接与文本
 			popupBox.querySelectorAll('a').forEach(link => {
-				// 替换原邮箱
 				if (link.href.includes('lovezww2011@gmail.com') || link.innerText.includes('lovezww2011@gmail.com')) {
 					link.href = 'mailto:kkh258369@gmail.com';
 					link.innerText = 'kkh258369@gmail.com';
 				}
-				// 替换原网址
 				if (link.href.includes('freeps.org') || link.innerText.includes('freeps.org')) {
 					link.href = 'https://www.psdrawing.com/';
 					link.innerText = 'https://www.psdrawing.com/';
 				}
 			});
 		});
-
-		// 持续监听弹窗出现
 		observer.observe(document.body, { childList: true, subtree: true });
 	</script>
+
 </body>
 
 </html>
