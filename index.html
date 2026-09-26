@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://psdrawing.com/" />
   <meta property="og:type" content="website" />
 
-  <!-- Google 结构化数据 (WebApplication + FAQSchema 强化收录) -->
+  <!-- Google 结构化数据 (1. WebApplication 软件标识) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,6 +30,48 @@
       "priceCurrency": "USD"
     },
     "description": "Free web-based photo and image editor supporting layers, drawing brushes, filters, and client-side privacy."
+  }
+  </script>
+
+  <!-- Google 结构化数据 (2. FAQPage 专属问答富摘要，占领大面积搜索版面) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is FreePS completely free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, FreePS is 100% free for both personal and commercial use without account registration or subscription fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my private photos uploaded to any servers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. FreePS is built purely on client-side web technologies. Every drawing operation and picture modification is executed within your local computer's browser memory."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats can I export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can export your artwork to PNG (transparent), JPG, WEBP, and raw JSON project files for later re-editing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I open and view Adobe Photoshop (.PSD) files online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, FreePS allows you to preview and edit layer graphics directly in your browser without requiring an Adobe Creative Cloud subscription."
+        }
+      }
+    ]
   }
   </script>
 
@@ -168,7 +210,6 @@
       margin-bottom: 36px;
     }
 
-    /* 特性网格 */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -187,7 +228,6 @@
     .card h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
     .card p { font-size: 14px; color: var(--text-muted); }
 
-    /* 4步快速教程模块 (AdSense 核心加分项) */
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -210,7 +250,6 @@
     .step-card h4 { font-size: 16px; color: #fff; margin-bottom: 6px; }
     .step-card p { font-size: 13px; color: var(--text-muted); }
 
-    /* 快捷键速查表 */
     .shortcuts-table {
       width: 100%;
       border-collapse: collapse;
@@ -237,7 +276,6 @@
       color: #93c5fd;
     }
 
-    /* FAQ 模块 */
     .faq-list {
       max-width: 820px;
       margin: 0 auto 60px;
@@ -271,10 +309,10 @@
 </head>
 <body>
 
-  <!-- 顶部导航与语言切换 -->
   <header>
     <div class="logo">🎨 Free<span>PS</span></div>
     <nav>
+      <a href="/psd-viewer.html" style="color: #60a5fa; font-weight: 500;">PSD Viewer</a>
       <a href="#tutorial" data-i18n="nav_tutorial">How to Use</a>
       <a href="#shortcuts" data-i18n="nav_shortcuts">Shortcuts</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
@@ -293,7 +331,6 @@
   </header>
 
   <main>
-    <!-- Hero 首屏 -->
     <section class="hero">
       <div class="badge" data-i18n="hero_badge">✨ 100% Free · No Installation Needed</div>
       <h1 data-i18n="hero_title">Fast & Easy In-Browser Photo Editing</h1>
@@ -304,7 +341,6 @@
     </section>
 
     <div class="container">
-      <!-- 核心特性卡片 -->
       <h2 class="section-title" data-i18n="feat_head">Built for Everyday Image Adjustments</h2>
       <div class="features-grid">
         <div class="card">
@@ -325,11 +361,10 @@
         <div class="card">
           <div class="card-icon">⚡</div>
           <h3 data-i18n="feat_4_title">Instant Zero-Install</h3>
-          <p data-i18n="feat_4_desc">No hefty software downloads or subscriptions. Compatible with modern browsers on Windows, macOS, and Linux.</p>
+          <p data-i18n="feat_4_desc">No software downloads or subscriptions. Compatible with modern browsers on Windows, macOS, and Linux.</p>
         </div>
       </div>
 
-      <!-- 4步教程模块 (丰富内容，让 AdSense 判定为高质量教学站) -->
       <section id="tutorial">
         <h2 class="section-title" data-i18n="tutor_head">Quick Start: How to Edit in 4 Simple Steps</h2>
         <p class="section-subtitle" data-i18n="tutor_sub">Get started editing your graphics without any learning curve.</p>
@@ -357,7 +392,6 @@
         </div>
       </section>
 
-      <!-- 快捷键速查表 (增加页面专业性与停留时间) -->
       <section id="shortcuts">
         <h2 class="section-title" data-i18n="short_head">Keyboard Shortcuts Reference</h2>
         <p class="section-subtitle" data-i18n="short_sub">Boost your editing workflow with standard key combinations.</p>
@@ -399,7 +433,6 @@
         </table>
       </section>
 
-      <!-- 扩展 FAQ -->
       <section id="faq">
         <h2 class="section-title" data-i18n="faq_head">Frequently Asked Questions</h2>
         <div class="faq-list">
@@ -416,8 +449,8 @@
             <p data-i18n="faq_a3">You can export your artwork to PNG (transparent), JPG, WEBP, and raw JSON project files for later re-editing.</p>
           </div>
           <div class="faq-item">
-            <h4 data-i18n="faq_q4">Can I open complex Adobe Photoshop (.PSD) files?</h4>
-            <p data-i18n="faq_a4">FreePS can preview and handle basic layer graphics. For extremely large industrial PSD files with advanced smart objects, we recommend using dedicated desktop software.</p>
+            <h4 data-i18n="faq_q4">Can I open and view Adobe Photoshop (.PSD) files online?</h4>
+            <p data-i18n="faq_a4">Yes, FreePS allows you to preview and edit layer graphics directly in your browser without requiring an Adobe Creative Cloud subscription.</p>
           </div>
         </div>
       </section>
@@ -428,13 +461,13 @@
     <p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
     <div class="footer-links">
       <a href="/editor.html" data-i18n="footer_editor">Online Editor</a>
+      <a href="/psd-viewer.html" style="color: #60a5fa;">Free PSD Viewer</a>
       <a href="/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
       <a href="/terms.html" data-i18n="footer_terms">Terms of Service</a>
       <a href="mailto:support@psdrawing.com">Contact Us</a>
     </div>
   </footer>
 
-  <!-- 完善的多语言词库 -->
   <script>
     const translations = {
       en: {
@@ -487,8 +520,8 @@
         faq_a2: "No. FreePS is built purely on client-side web technologies. Every drawing operation and picture modification is executed within your local computer's browser memory.",
         faq_q3: "What image formats can I export?",
         faq_a3: "You can export your artwork to PNG (transparent), JPG, WEBP, and raw JSON project files for later re-editing.",
-        faq_q4: "Can I open complex Adobe Photoshop (.PSD) files?",
-        faq_a4: "FreePS can preview and handle basic layer graphics. For extremely large industrial PSD files with advanced smart objects, we recommend using dedicated desktop software.",
+        faq_q4: "Can I open and view Adobe Photoshop (.PSD) files online?",
+        faq_a4: "Yes, FreePS allows you to preview and edit layer graphics directly in your browser without requiring an Adobe Creative Cloud subscription.",
         footer_editor: "Online Editor",
         footer_privacy: "Privacy Policy",
         footer_terms: "Terms of Service"
@@ -543,8 +576,8 @@
         faq_a2: "绝不会。FreePS 采用纯前端客户端技术，所有修图计算都在您的电脑浏览器内存中完成，数据安全无虞。",
         faq_q3: "我可以导出哪些图片格式？",
         faq_a3: "支持导出 PNG（支持透明背景）、JPG、WEBP 以及方便下次继续编辑的 JSON 项目工程文件。",
-        faq_q4: "它可以打开极为复杂的 Photoshop (.PSD) 文件吗？",
-        faq_a4: "FreePS 支持查看和处理基础的图层图像。对于包含极复杂智能对象的大型商业 PSD，建议搭配桌面级软件使用。",
+        faq_q4: "它可以在线打开并查看 Photoshop (.PSD) 文件吗？",
+        faq_a4: "可以，FreePS 支持在浏览器中直接预览和编辑图层图像，无需购买昂贵的 Adobe 订阅。",
         footer_editor: "在线编辑器",
         footer_privacy: "隐私政策",
         footer_terms: "服务条款"
@@ -599,8 +632,8 @@
         faq_a2: "絕不會。FreePS 採用純前端技術，所有修圖運算都在您的本機瀏覽器內完成。",
         faq_q3: "我可以匯出哪些圖片格式？",
         faq_a3: "支援匯出 PNG（支援透明背景）、JPG、WEBP 以及方便後續編輯的 JSON 專案檔。",
-        faq_q4: "它可以開啟極為複雜的 Photoshop (.PSD) 檔案嗎？",
-        faq_a4: "FreePS 支援檢視和處理基礎圖層影像。對於包含極複雜智慧物件的大型商業 PSD，建議搭配桌面版軟體使用。",
+        faq_q4: "它可以在線開啟並預覽 Photoshop (.PSD) 檔案嗎？",
+        faq_a4: "可以，FreePS 支援在瀏覽器中直接檢視與編輯圖層影像，無須購買 Adobe 訂閱。",
         footer_editor: "線上編輯器",
         footer_privacy: "隱私政策",
         footer_terms: "服務條款"
@@ -655,8 +688,8 @@
         faq_a2: "No. Funciona completamente con tecnología web del lado del cliente.",
         faq_q3: "¿Qué formatos puedo exportar?",
         faq_a3: "Puedes exportar en PNG (transparente), JPG, WEBP y archivos de proyecto JSON.",
-        faq_q4: "¿Puede abrir archivos PSD complejos?",
-        faq_a4: "FreePS maneja gráficos en capas básicos. Para archivos PSD gigantes con objetos inteligentes, se recomienda software de escritorio.",
+        faq_q4: "¿Puedo abrir y ver archivos PSD en línea?",
+        faq_a4: "Sí, FreePS te permite previsualizar y editar capas directamente en tu navegador sin suscripción a Creative Cloud.",
         footer_editor: "Editor en Línea",
         footer_privacy: "Política de Privacidad",
         footer_terms: "Términos de Servicio"
@@ -711,8 +744,8 @@
         faq_a2: "ありません。すべての処理はお手元のブラウザ内だけで安全に実行されます。",
         faq_q3: "どの画像形式で保存できますか？",
         faq_a3: "PNG（透明対応）、JPG、WEBP、および再編集用のJSON形式で保存できます。",
-        faq_q4: "複雑なPSDファイルも開けますか？",
-        faq_a4: "基本的なレイヤー構造のプレビューや編集に対応しています。高度なスマートオブジェクトを含む極端に重いファイルはデスクトップ版専用ソフトをおすすめします。",
+        faq_q4: "PSDファイルをオンラインで開いて閲覧できますか？",
+        faq_a4: "はい、FreePSを使えばCreative Cloudの有料契約なしで、ブラウザ上でPSDのプレビューや簡易編集が可能です。",
         footer_editor: "オンラインエディター",
         footer_privacy: "プライバシーポリシー",
         footer_terms: "利用規約"
