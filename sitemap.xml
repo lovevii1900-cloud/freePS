@@ -3,28 +3,35 @@
   <!-- 首页落地页 -->
   <url>
     <loc>https://psdrawing.com/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <!-- 专属 PSD 长尾落地页 (精准截流) -->
+  <url>
+    <loc>https://psdrawing.com/psd-viewer.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <!-- 在线修图工作台 -->
   <url>
     <loc>https://psdrawing.com/editor.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <!-- 隐私政策 -->
   <url>
     <loc>https://psdrawing.com/privacy.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <!-- 服务条款 -->
   <url>
     <loc>https://psdrawing.com/terms.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
