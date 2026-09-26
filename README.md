@@ -7,9 +7,9 @@ FreePS operates directly in the browser. You can create images, paste from the c
 
 ## Preview
 
-https://geeeeeeeek.github.io/freePS/
+[https://geeeeeeeek.github.io/freePS/](https://psdrawing.com/)
 
-https://zaixianps.net/ (中文版)
+https://psdrawing.com/
 
 
 ## Browser Support
@@ -27,7 +27,6 @@ Just download this code, upload to your server. home page is index.html
 
 ## Thanks
 
-https://github.com/viliusle/miniPaint
 
 
 
