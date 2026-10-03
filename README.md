@@ -1,16 +1,29 @@
-# freePS - Free Online PSD Viewer & Photo Editor
+# freePS — Free Online PSD Viewer & Photo Editor
 
-👉 **Live Website**: [https://psdrawing.com/](https://psdrawing.com/)
-Online image editor lets you create, edit images using HTML5 technologies. No need to buy, download, install or have obsolete flash. No ads. Key features: layers, filters, HTML5, open source, Photoshop alternative.
+👉 **Try it live: [Free Online PSD Viewer & Photo Editor](https://psdrawing.com/)**
 
-FreePS operates directly in the browser. You can create images, paste from the clipboard (ctrl+v) or upload from the computer (using menu or drag & drop). Nothing will be sent to any server. Everything stays in your browser.
+freePS is a free online PSD viewer and photo editor that runs entirely in your web browser. Open, view, and edit Adobe Photoshop (.PSD) files with full layer support — no installation, no sign-up, and no Adobe Creative Cloud subscription required.
 
+🔗 **Useful links**
 
-## Preview
+- [Open the online photo editor](https://psdrawing.com/editor) — edit photos, draw, and work with layers in your browser
+- [How to open a PSD file without Photoshop](https://psdrawing.com/psd-viewer) — step-by-step guide and free in-browser viewer
 
+## Why freePS?
 
-👉 **在线体验**: [https://psdrawing.com/](https://psdrawing.com/)
+- **100% free** for personal and commercial use — no accounts, no subscriptions, no ads
+- **Full layer support** — inspect, reorder, duplicate, and adjust PSD layers and opacity
+- **Real editing tools** — brushes, eraser, marquee selection, clone stamp, color picker, text, and filters
+- **100% private by design** — every PSD parse and edit happens locally in your browser memory; files are never uploaded to a server
+- **Zero install** — works on Windows, macOS, and Linux in any modern browser
+- **Export anywhere** — save as PNG (with transparency), JPG, WEBP, or a JSON project file for later editing
 
+## Quick start
+
+1. Open the [online editor](https://psdrawing.com/editor)
+2. Drag & drop a PSD or image file (or use File → Open, or paste with Ctrl+V)
+3. Edit with the toolbar, layers panel, and filters
+4. Export via File → Save
 
 ## Browser Support
 
@@ -24,8 +37,4 @@ FreePS operates directly in the browser. You can create images, paste from the c
 
 Just download this code, upload to your server. home page is index.html
 
-
 ## Thanks
-
-
-
