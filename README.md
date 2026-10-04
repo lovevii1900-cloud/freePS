@@ -2,6 +2,8 @@
 
 👉 **Try it live: [Free Online PSD Viewer & Photo Editor](https://psdrawing.com/)**
 
+Tools & guides: [PSD to PNG](https://psdrawing.com/psd-to-png) · [Open a PSD without Photoshop](https://psdrawing.com/open-psd-without-photoshop) · [No-upload PSD viewer](https://psdrawing.com/psd-viewer-no-upload)
+
 freePS is a free online PSD viewer and photo editor that runs entirely in your web browser. Open, view, and edit Adobe Photoshop (.PSD) files with full layer support — no installation, no sign-up, and no Adobe Creative Cloud subscription required.
 
 🔗 **Useful links**
