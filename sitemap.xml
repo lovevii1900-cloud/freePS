@@ -3,21 +3,49 @@
   <!-- 首页落地页 -->
   <url>
     <loc>https://psdrawing.com/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- 专属 PSD 长尾落地页 (精准截流) -->
   <url>
     <loc>https://psdrawing.com/psd-viewer</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <!-- PSD 转 PNG 工具/教程页 -->
+  <url>
+    <loc>https://psdrawing.com/psd-to-png</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 无需 Photoshop 打开 PSD 教程页 -->
+  <url>
+    <loc>https://psdrawing.com/open-psd-without-photoshop</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 不上传隐私型 PSD 查看器页 -->
+  <url>
+    <loc>https://psdrawing.com/psd-viewer-no-upload</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- iPhone 打开 PSD 教程页 -->
+  <url>
+    <loc>https://psdrawing.com/open-psd-on-iphone</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <!-- 在线修图工作台 -->
   <url>
     <loc>https://psdrawing.com/editor</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
