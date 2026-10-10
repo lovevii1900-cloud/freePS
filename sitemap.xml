@@ -42,6 +42,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- PSD 转 JPG 工具/教程页 -->
+  <url>
+    <loc>https://psdrawing.com/psd-to-jpg</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- 在线修图工作台 -->
   <url>
     <loc>https://psdrawing.com/editor</loc>
