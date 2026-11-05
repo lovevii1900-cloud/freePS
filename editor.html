@@ -2,36 +2,23 @@
 <html lang="en">
 
 <head>
-	<title>FreePS Editor - Free Online Photo Editor & Drawing Tool</title>
-	<meta name="description" content="Edit photos free in your browser with the FreePS Editor — layers, drawing tools and full PSD support. No install, no sign-up, 100% private. Start now." />
+	<meta charset="UTF-8" />
+	<title>freePS Studio - Free Online Multi-Layer Photo Editor &amp; PSD Workspace</title>
+	<meta name="description" content="freePS Studio is a free online multi-layer photo editor and PSD workspace. Edit layers, retouch photos, use brushes and filters directly in your browser." />
+	<meta name="robots" content="index, follow" />
 	<link rel="canonical" href="https://psdrawing.com/editor" />
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "WebApplication",
-	  "name": "freePS Editor",
-	  "url": "https://psdrawing.com/editor",
-	  "applicationCategory": "DesignApplication",
-	  "operatingSystem": "Any",
-	  "browserRequirements": "Requires a modern web browser with JavaScript enabled",
-	  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-	  "description": "Free online photo editor and PSD viewer with layers, drawing tools and local in-browser processing."
-	}
-	</script>
-	<meta property="og:title" content="FreePS Editor - Free Online Photo Editor & Drawing Tool" />
-	<meta property="og:description" content="Edit photos, draw, and work with layers directly in your web browser. Free, private, no installation." />
+	<meta property="og:title" content="freePS Studio - Free Online Multi-Layer Photo Editor" />
+	<meta property="og:description" content="Edit photos, open PSD files, draw, and work with layers directly in your web browser. Free, private, no installation." />
 	<meta property="og:url" content="https://psdrawing.com/editor" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://psdrawing.com/images/og-image.jpg" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content="https://psdrawing.com/images/og-image.jpg" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
 	<link rel="icon" sizes="192x192" href="images/favicon.png">
 
 	<style>
-		/* 整体基础样式 */
 		html, body {
 			margin: 0;
 			padding: 0;
@@ -42,70 +29,18 @@
 			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 		}
 
-		/* 核心调整：主工作区整体向上抬高 90px，给底部横幅让位，且画布自然上移 */
+		/* Full-screen workspace without fake ad bar */
 		.wrapper {
 			position: absolute !important;
 			top: 0 !important;
 			left: 0 !important;
 			right: 0 !important;
-			bottom: 90px !important;
+			bottom: 0 !important;
 			width: 100vw !important;
-			height: calc(100vh - 90px) !important;
+			height: 100vh !important;
 		}
 
-		/* 底部固定广告横幅栏 (AdSense 728x90 黄金展示位) */
-		.ad-bottom-bar {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 90px;
-			background: #14161d;
-			border-top: 1px solid #2a2e3d;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			z-index: 9999;
-			box-sizing: border-box;
-		}
-		.ad-label {
-			font-size: 10px;
-			color: #6b7280;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			margin-bottom: 4px;
-		}
-		.ad-banner-box {
-			width: 728px;
-			max-width: 95%;
-			height: 60px;
-			background: #1b1e28;
-			border: 1px dashed #374151;
-			border-radius: 6px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 12px;
-			color: #9ca3af;
-			font-size: 13px;
-			box-sizing: border-box;
-		}
-		.ad-banner-box span {
-			font-size: 18px;
-		}
-
-		/* 移动端自适应 */
-		@media (max-width: 768px) {
-			.ad-bottom-bar { height: 60px; }
-			.ad-banner-box { height: 42px; font-size: 11px; }
-			.wrapper {
-				bottom: 60px !important;
-				height: calc(100vh - 60px) !important;
-			}
-		}
-
-		/* 开屏新手引导卡片 */
+		/* Welcome modal */
 		.welcome-overlay {
 			position: fixed;
 			top: 0;
@@ -124,7 +59,7 @@
 			border: 1px solid #374151;
 			border-radius: 14px;
 			padding: 32px 28px;
-			max-width: 440px;
+			max-width: 460px;
 			width: 90%;
 			text-align: center;
 			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
@@ -153,7 +88,7 @@
 			background: #3b82f6;
 			color: #fff;
 			border: none;
-			padding: 12px 20px;
+			padding: 13px 20px;
 			border-radius: 8px;
 			font-size: 15px;
 			font-weight: 600;
@@ -174,7 +109,7 @@
 		.btn-secondary:hover { background: #374151; }
 		.welcome-tip {
 			font-size: 12px;
-			color: #6b7280;
+			color: #9ca3af;
 			border-top: 1px solid #2e3444;
 			padding-top: 14px;
 		}
@@ -185,15 +120,15 @@
 
 <body>
 
-	<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">FreePS Editor — Free Online Photo Editor & Drawing Tool</h1>
+	<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">freePS Studio — Free Online Multi-Layer Photo Editor &amp; PSD Workspace</h1>
 
 	<div class="wrapper">
 		<nav aria-label="Main Menu" class="main_menu" id="main_menu"></nav>
 
 		<div class="submenu">
-			<a class="logo" href="/">FreePS</a>
+			<a class="logo" href="/">freePS</a>
 			<div class="block attributes" id="action_attributes"></div>
-			<a href="/" style="margin-left: auto; color: #888; font-size: 13px; text-decoration: none; padding-right: 15px; display: flex; align-items: center;">← Home</a>
+			<a href="/" style="margin-left: auto; color: #93c5fd; font-size: 13px; text-decoration: none; padding-right: 15px; display: flex; align-items: center;">← Back to Home</a>
 			<button class="undo_button" id="undo_button" type="button">
 				<span class="sr_only">Undo</span>
 			</button>
@@ -257,66 +192,273 @@
 	<div class="hidden" id="tmp"></div>
 	<div id="popups"></div>
 
-	<!-- 底部固定通栏广告位 (728x90 Leaderboard 标准位) -->
-	<aside class="ad-bottom-bar">
-		<div class="ad-label">Sponsor / Advertisement</div>
-		<div class="ad-banner-box">
-			<span>📢</span>
-			<strong>Ad Space</strong>
-			<span style="font-size: 11px; color: #6b7280;">(Google AdSense 728x90 Leaderboard / Responsive Banner)</span>
-		</div>
-	</aside>
-
-	<!-- 开屏新手引导卡片 -->
+	<!-- Welcome Guide Overlay -->
 	<div class="welcome-overlay" id="welcomeOverlay">
 		<div class="welcome-card">
 			<button class="welcome-close" onclick="closeWelcome()">✕</button>
-			<h2>🎨 Welcome to FreePS</h2>
-			<p>Lightweight in-browser image editor & drawing canvas.</p>
+			<h2>🎨 Welcome to freePS Studio</h2>
+			<p>Open PSD files or images from your computer, or start a blank canvas.</p>
 			
 			<div class="welcome-actions">
 				<button class="btn-primary" onclick="openImageFile()">
-					📂 Open Image from Computer
+					📂 Open PSD / Image from Computer
 				</button>
 				<button class="btn-secondary" onclick="closeWelcome()">
-					📄 New Blank Project (1024 × 768)
+					📄 New Blank Canvas (1024 × 768)
 				</button>
 			</div>
 
 			<div class="welcome-tip">
-				💡 Tip: Drag & drop any image here or press <strong>Ctrl+V</strong> to paste from clipboard.
+				💡 Supports <strong>.PSD</strong>, <strong>.PNG</strong>, <strong>.JPG</strong>, <strong>.WEBP</strong> &amp; <strong>Ctrl+V</strong> clipboard paste. 100% client-side private.
 			</div>
 		</div>
 	</div>
 
 	<script>
+
+// Built-in Client-Side Adobe PSD (8BPS) Binary Parser & Preview Renderer
+const PSDParser = {
+  parse(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+    if (magic !== '8BPS') {
+      throw new Error('Not a valid PSD file (missing 8BPS signature).');
+    }
+    const version = view.getUint16(4, false);
+    if (version !== 1 && version !== 2) {
+      throw new Error('Unsupported PSD version: ' + version);
+    }
+    const channels = view.getUint16(12, false);
+    const height = view.getUint32(14, false);
+    const width = view.getUint32(18, false);
+    const depth = view.getUint16(22, false);
+    const colorMode = view.getUint16(24, false);
+    const colorModes = {
+      0: 'Bitmap', 1: 'Grayscale', 2: 'Indexed', 3: 'RGB',
+      4: 'CMYK', 7: 'Multichannel', 8: 'Duotone', 9: 'Lab'
+    };
+
+    let offset = 26;
+    // 1. Color Mode Data Section
+    const colorDataLen = view.getUint32(offset, false);
+    offset += 4 + colorDataLen;
+
+    // 2. Image Resources Section
+    const imgResLen = view.getUint32(offset, false);
+    offset += 4 + imgResLen;
+
+    // 3. Layer and Mask Information Section
+    const isPSB = (version === 2);
+    let layerAndMaskLen = 0;
+    if (isPSB) {
+      layerAndMaskLen = Number(view.getBigUint64(offset, false));
+      offset += 8;
+    } else {
+      layerAndMaskLen = view.getUint32(offset, false);
+      offset += 4;
+    }
+    const layerSectionEnd = offset + layerAndMaskLen;
+
+    // Extract layer count & layer names if available
+    const layers = [];
+    try {
+      if (layerAndMaskLen > 0) {
+        let lOffset = offset;
+        let layerInfoLen = isPSB ? Number(view.getBigUint64(lOffset, false)) : view.getUint32(lOffset, false);
+        lOffset += isPSB ? 8 : 4;
+        if (layerInfoLen > 0 && lOffset + 2 <= layerSectionEnd) {
+          let layerCount = view.getInt16(lOffset, false);
+          lOffset += 2;
+          const absCount = Math.abs(layerCount);
+          for (let i = 0; i < absCount && lOffset < layerSectionEnd; i++) {
+            const top = view.getInt32(lOffset, false);
+            const left = view.getInt32(lOffset + 4, false);
+            const bottom = view.getInt32(lOffset + 8, false);
+            const right = view.getInt32(lOffset + 12, false);
+            const numCh = view.getUint16(lOffset + 16, false);
+            lOffset += 18 + numCh * (isPSB ? 10 : 6);
+            lOffset += 12; // blend mode sig + key + opacity + clipping + flags + filler
+            const extraLen = view.getUint32(lOffset, false);
+            lOffset += 4;
+            const extraEnd = lOffset + extraLen;
+            // Skip mask data and blending ranges
+            const maskLen = view.getUint32(lOffset, false);
+            lOffset += 4 + maskLen;
+            const blendLen = view.getUint32(lOffset, false);
+            lOffset += 4 + blendLen;
+            // Pascal string: layer name
+            const nameLen = view.getUint8(lOffset);
+            let name = '';
+            for (let c = 0; c < nameLen; c++) {
+              name += String.fromCharCode(view.getUint8(lOffset + 1 + c));
+            }
+            layers.push({
+              name: name || ('Layer ' + (i + 1)),
+              width: Math.max(0, right - left),
+              height: Math.max(0, bottom - top)
+            });
+            lOffset = extraEnd;
+          }
+        }
+      }
+    } catch (e) {
+      // Ignore non-critical layer list parsing errors and proceed to composite image
+    }
+
+    offset = layerSectionEnd;
+
+    // 4. Merged Composite Image Data Section
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(width, height);
+    const out = imgData.data;
+
+    if (offset < view.byteLength && depth === 8 && (colorMode === 3 || colorMode === 1 || colorMode === 4)) {
+      const compression = view.getUint16(offset, false);
+      offset += 2;
+      const numPixels = width * height;
+      const chData = [];
+      const readChannels = Math.min(channels, 4);
+
+      if (compression === 0) {
+        // Raw uncompressed planar data
+        for (let ch = 0; ch < readChannels; ch++) {
+          chData[ch] = new Uint8Array(arrayBuffer, offset + ch * numPixels, numPixels);
+        }
+      } else if (compression === 1) {
+        // RLE PackBits compressed data
+        const rowCounts = [];
+        const totalRows = channels * height;
+        for (let r = 0; r < totalRows; r++) {
+          rowCounts.push(isPSB ? view.getUint32(offset, false) : view.getUint16(offset, false));
+          offset += isPSB ? 4 : 2;
+        }
+        let rIdx = 0;
+        for (let ch = 0; ch < channels; ch++) {
+          const buf = new Uint8Array(numPixels);
+          let p = 0;
+          for (let y = 0; y < height; y++) {
+            const byteCount = rowCounts[rIdx++];
+            const rowEnd = offset + byteCount;
+            while (offset < rowEnd && p < numPixels) {
+              let header = view.getInt8(offset++);
+              if (header >= 0) {
+                const count = header + 1;
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = view.getUint8(offset++);
+                }
+              } else if (header > -128) {
+                const count = 1 - header;
+                const val = view.getUint8(offset++);
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = val;
+                }
+              }
+            }
+            offset = rowEnd;
+          }
+          if (ch < readChannels) chData[ch] = buf;
+        }
+      }
+
+      if (chData.length > 0) {
+        for (let i = 0; i < numPixels; i++) {
+          const idx = i * 4;
+          if (colorMode === 3) {
+            out[idx] = chData[0] ? chData[0][i] : 0;
+            out[idx + 1] = chData[1] ? chData[1][i] : out[idx];
+            out[idx + 2] = chData[2] ? chData[2][i] : out[idx];
+            out[idx + 3] = (channels >= 4 && chData[3]) ? chData[3][i] : 255;
+          } else if (colorMode === 1) {
+            const g = chData[0][i];
+            out[idx] = g; out[idx + 1] = g; out[idx + 2] = g;
+            out[idx + 3] = (channels >= 2 && chData[1]) ? chData[1][i] : 255;
+          } else if (colorMode === 4 && chData.length >= 4) {
+            // CMYK in PSD is stored inverted (255 = 0% ink, 0 = 100% ink)
+            const c = chData[0][i] / 255;
+            const m = chData[1][i] / 255;
+            const y = chData[2][i] / 255;
+            const k = chData[3][i] / 255;
+            out[idx] = Math.round(255 * c * k);
+            out[idx + 1] = Math.round(255 * m * k);
+            out[idx + 2] = Math.round(255 * y * k);
+            out[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+
+    return {
+      width,
+      height,
+      channels,
+      depth,
+      colorModeName: colorModes[colorMode] || ('Mode ' + colorMode),
+      layers,
+      canvas
+    };
+  },
+
+  savePendingFile(name, dataUrl, width, height) {
+    try {
+      sessionStorage.setItem('freeps_pending_file', JSON.stringify({ name, dataUrl, width, height, ts: Date.now() }));
+    } catch (e) {
+      // Ignore quota errors for huge images
+    }
+  }
+};
+
 		function closeWelcome() {
 			const overlay = document.getElementById('welcomeOverlay');
 			if (overlay) overlay.style.display = 'none';
-			// 触发重绘重算，确保画板精确居中
 			window.dispatchEvent(new Event('resize'));
+		}
+
+		function insertDataUrlToCanvas(name, dataUrl) {
+			const img = new Image();
+			img.onload = () => {
+				if (window.Layers && typeof window.Layers.insert === 'function') {
+					window.Layers.insert({
+						name: name,
+						type: 'image',
+						data: img,
+						width: img.naturalWidth || img.width,
+						height: img.naturalHeight || img.height
+					});
+				}
+			};
+			img.src = dataUrl;
 		}
 
 		function openImageFile() {
 			const fileInput = document.createElement('input');
 			fileInput.type = 'file';
-			fileInput.accept = 'image/*';
+			fileInput.accept = '.psd,.psb,image/*,.json,.webp,.bmp,.gif,.tif,.tiff';
 			fileInput.onchange = (e) => {
 				const file = e.target.files[0];
-				if (file) {
+				if (!file) return;
+				const ext = file.name.split('.').pop().toLowerCase();
+				if (ext === 'psd' || ext === 'psb') {
 					const reader = new FileReader();
 					reader.onload = (event) => {
-						const img = new Image();
-						img.onload = () => {
-							if (window.Layers) {
-								window.Layers.insert({
-									name: file.name,
-									type: 'image',
-									data: img
-								});
+						try {
+							const res = PSDParser.parse(event.target.result);
+							insertDataUrlToCanvas(file.name, res.canvas.toDataURL('image/png'));
+						} catch (err) {
+							// Fallback to miniPaint native file_open if available
+							if (window.File_open && typeof window.File_open.file_open_data_url_handler === 'function') {
+								window.File_open.file_open_data_url_handler(file);
 							}
-						};
-						img.src = event.target.result;
+						}
+					};
+					reader.readAsArrayBuffer(file);
+				} else {
+					const reader = new FileReader();
+					reader.onload = (event) => {
+						insertDataUrlToCanvas(file.name, event.target.result);
 					};
 					reader.readAsDataURL(file);
 				}
@@ -325,19 +467,36 @@
 			fileInput.click();
 		}
 
-		// 替换“关于”弹窗联系方式
+		// Auto-load pending file handed off from Homepage or PSD Converter
+		window.addEventListener('load', () => {
+			try {
+				const raw = sessionStorage.getItem('freeps_pending_file');
+				if (raw) {
+					sessionStorage.removeItem('freeps_pending_file');
+					const item = JSON.parse(raw);
+					if (item && item.dataUrl && (Date.now() - item.ts < 300000)) {
+						closeWelcome();
+						setTimeout(() => {
+							insertDataUrlToCanvas(item.name || 'image.psd', item.dataUrl);
+						}, 400);
+					}
+				}
+			} catch (e) {}
+		});
+
+		// Keep popup links consistent with canonical domain (https://psdrawing.com/)
 		const observer = new MutationObserver(() => {
 			const popupBox = document.getElementById('popups') || document.body;
 			if (!popupBox) return;
 
 			popupBox.querySelectorAll('a').forEach(link => {
 				if (link.href.includes('lovezww2011@gmail.com') || link.innerText.includes('lovezww2011@gmail.com')) {
-					link.href = 'mailto:kkh258369@gmail.com';
-					link.innerText = 'kkh258369@gmail.com';
+					link.href = 'mailto:support@psdrawing.com';
+					link.innerText = 'support@psdrawing.com';
 				}
-				if (link.href.includes('freeps.org') || link.innerText.includes('freeps.org')) {
-					link.href = 'https://www.psdrawing.com/';
-					link.innerText = 'https://www.psdrawing.com/';
+				if (link.href.includes('freeps.org') || link.innerText.includes('freeps.org') || link.href.includes('www.psdrawing.com')) {
+					link.href = 'https://psdrawing.com/';
+					link.innerText = 'https://psdrawing.com/';
 				}
 			});
 		});

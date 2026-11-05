@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Free Online PSD Viewer & Editor - Open PSD Without Photoshop</title>
-  <meta name="description" content="Open PSD files online free — no Photoshop, no uploads. View and edit layers right in your browser. 100% private, nothing leaves your device. Try it now." />
-  <meta name="keywords" content="psd viewer online, open psd without photoshop, free psd file editor online, view psd in browser, edit psd online free" />
+  <title>PSD to PNG &amp; JPG Converter Online Free - PSD Layer Inspector | freePS</title>
+  <meta name="description" content="Convert Adobe Photoshop (.PSD) files to PNG, JPG, or WEBP online for free, and inspect PSD layer names, dimensions, bit depth, and color modes in your browser." />
+  <meta name="keywords" content="psd to png converter, psd to jpg online, psd layer inspector, open psd file online, convert psd without photoshop" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
   <link rel="icon" sizes="192x192" href="images/favicon.png" />
   <link rel="canonical" href="https://psdrawing.com/psd-viewer" />
 
   <!-- OpenGraph -->
-  <meta property="og:title" content="Free Online PSD Viewer & Editor - FreePS" />
-  <meta property="og:description" content="Open and edit PSD files directly in your web browser. Free alternative to Adobe Photoshop." />
+  <meta property="og:title" content="PSD to PNG &amp; JPG Converter Online Free - PSD Layer Inspector" />
+  <meta property="og:description" content="Convert PSD files to high-resolution PNG, JPG, or WEBP and inspect PSD layers &amp; metadata locally in your browser." />
   <meta property="og:url" content="https://psdrawing.com/psd-viewer" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://psdrawing.com/images/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Free Online PSD Viewer & Editor - FreePS" />
-  <meta name="twitter:description" content="Open and edit PSD files directly in your web browser. Free alternative to Adobe Photoshop." />
+  <meta name="twitter:title" content="PSD to PNG &amp; JPG Converter Online Free - PSD Layer Inspector" />
+  <meta name="twitter:description" content="Convert PSD files to high-resolution PNG, JPG, or WEBP and inspect PSD layers &amp; metadata locally in your browser." />
   <meta name="twitter:image" content="https://psdrawing.com/images/og-image.jpg" />
 
-  <!-- FAQ 结构化数据 (专为 PSD 搜索优化) -->
+  <!-- Structured Data: FAQPage specific to PSD conversion & inspection -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,18 +31,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How do I open a PSD file without Adobe Photoshop?",
+        "name": "How do I convert a PSD file to PNG or JPG without Photoshop?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Simply click 'Open PSD in FreePS Editor' on this page, drag and drop your .PSD file into the canvas, and you can inspect, view layers, and export your image immediately without installing any software."
+          "text": "Select or drag your .PSD file into the converter box on this page. The browser parses the 8BPS Photoshop binary structure locally and allows you to download a lossless PNG, JPG, or WEBP image in one click."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I export my PSD file to PNG or JPG?",
+        "name": "Can I inspect PSD layer names and color modes before converting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! Once you open your PSD file in FreePS, go to 'File -> Save' to export your layers to high-resolution PNG, JPG, or WEBP."
+          "text": "Yes. Once you drop a PSD file, the inspector table displays the exact canvas width and height in pixels, color mode (RGB, CMYK, Grayscale), bit depth, channel count, and the list of embedded layer names."
         }
       }
     ]
@@ -54,6 +55,7 @@
       --card-bg: #1a1e29;
       --accent: #3b82f6;
       --accent-hover: #2563eb;
+      --success: #10b981;
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --border: #2e3444;
@@ -81,9 +83,9 @@
     nav a:hover { color: #fff; }
 
     .content-wrap {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 48px 20px;
     }
     .badge {
       display: inline-block;
@@ -97,65 +99,114 @@
       border: 1px solid rgba(59, 130, 246, 0.3);
     }
     h1 {
-      font-size: 38px;
+      font-size: 36px;
       line-height: 1.25;
       font-weight: 800;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       color: #fff;
     }
     .lead {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--text-muted);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .cta-area {
       background: var(--card-bg);
       border: 2px dashed #3b82f6;
       border-radius: 14px;
-      padding: 40px 24px;
+      padding: 36px 24px;
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
+    .cta-area:hover { border-color: #60a5fa; background: rgba(59, 130, 246, 0.06); }
     .btn-main {
       display: inline-flex;
       align-items: center;
       background: var(--accent);
       color: #fff;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
-      padding: 14px 32px;
+      padding: 13px 28px;
       border-radius: 8px;
+      border: none;
+      cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-main:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-    .guide-section {
+    .btn-main:hover { background: var(--accent-hover); }
+
+    .inspector-box {
+      display: none;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
       margin-bottom: 40px;
     }
-    .guide-section h2 {
-      font-size: 24px;
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .meta-cell {
+      background: #12151e;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .meta-cell span { display: block; font-size: 12px; color: var(--text-muted); }
+    .meta-cell strong { font-size: 16px; color: #fff; }
+    .canvas-holder {
+      background: repeating-conic-gradient(#222632 0% 25%, #181b24 0% 50%) 50% / 20px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      max-height: 440px;
+      overflow: auto;
+      margin-bottom: 18px;
+    }
+    .canvas-holder canvas { max-width: 100%; max-height: 400px; height: auto; }
+    .export-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .btn-dl {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
       color: #fff;
-      margin-bottom: 16px;
+      background: var(--success);
+    }
+    .btn-dl.secondary { background: #283044; border: 1px solid #3e4863; }
+
+    .guide-section { margin-bottom: 40px; }
+    .guide-section h2 {
+      font-size: 23px;
+      color: #fff;
+      margin-bottom: 14px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 8px;
     }
-    .guide-section p {
-      color: var(--text-muted);
-      margin-bottom: 14px;
+    .guide-section p { color: var(--text-muted); margin-bottom: 14px; }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 12px;
     }
-    .guide-section ol {
-      padding-left: 20px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
+    .spec-table th, .spec-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
     }
-    .guide-section li {
-      margin-bottom: 8px;
-    }
-    .guide-section li strong {
-      color: #fff;
-    }
+    .spec-table th { color: #fff; background: rgba(255,255,255,0.03); }
     footer {
       border-top: 1px solid var(--border);
       padding: 30px 20px;
@@ -169,93 +220,348 @@
 <body>
 
   <header>
-    <a href="/" class="logo">🎨 Free<span>PS</span></a>
+    <a href="/" class="logo">🎨 free<span>PS</span></a>
     <nav>
-      <a href="/">← Back to Home</a>
-      <a href="/psd-to-png">PSD to PNG</a>
-      <a href="/open-psd-without-photoshop">Guide</a>
-      <a href="/editor" style="color: var(--accent);">Launch Editor</a>
+      <a href="/">← Home (PSD Viewer)</a>
+      <a href="/editor" style="color: var(--accent); font-weight: 600;">Launch Full Studio →</a>
     </nav>
   </header>
 
   <main class="content-wrap">
-    <div class="badge">📂 Dedicated PSD Tool</div>
-    <h1>Free Online PSD Viewer & File Editor</h1>
+    <div class="badge">🔄 Instant Format Converter &amp; Layer Inspector</div>
+    <h1>PSD to PNG &amp; JPG Converter Online</h1>
     <p class="lead">
-      Need to inspect or edit an Adobe Photoshop (.psd) file but don't have Photoshop installed? FreePS lets you open, view layers, and convert PSD files right inside your browser.
+      Convert Adobe Photoshop (<code>.psd</code>) design files into high-resolution PNG, JPG, or WEBP images and inspect embedded PSD layer metadata directly in your browser.
     </p>
 
-    <div class="cta-area">
-      <h3 style="font-size: 20px; color: #fff; margin-bottom: 10px;">Launch In-Browser PSD Workspace</h3>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Open your PSD file instantly. Zero installation, 100% private client-side processing.</p>
-      <a href="/editor" class="btn-main">🚀 Open PSD in FreePS Editor</a>
+    <input type="file" id="convFileInput" accept=".psd,.psb,image/*" style="display:none" />
+    <div class="cta-area" id="convDropzone" onclick="document.getElementById('convFileInput').click()">
+      <h3 style="font-size: 20px; color: #fff; margin-bottom: 8px;">Drop Your .PSD File to Convert &amp; Inspect Metadata</h3>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">100% client-side conversion — zero server uploads, no file size queues, no watermarks.</p>
+      <button type="button" class="btn-main" onclick="event.stopPropagation(); document.getElementById('convFileInput').click()">📁 Choose .PSD File to Convert</button>
+    </div>
+
+    <div class="inspector-box" id="inspectorBox">
+      <h3 style="color:#fff; margin-bottom: 14px;" id="inspTitle">PSD File Metadata &amp; Conversion</h3>
+      <div class="meta-grid" id="metaGrid"></div>
+      <div class="canvas-holder" id="inspCanvasHolder"></div>
+      <div class="export-row">
+        <button type="button" class="btn-dl" onclick="downloadConverted('image/png', 'png')">⬇️ Convert &amp; Download PNG</button>
+        <button type="button" class="btn-dl secondary" onclick="downloadConverted('image/jpeg', 'jpg')">⬇️ Convert &amp; Download JPG</button>
+        <button type="button" class="btn-dl secondary" onclick="downloadConverted('image/webp', 'webp')">⬇️ Convert &amp; Download WEBP</button>
+        <a href="/editor" class="btn-dl secondary" style="margin-left:auto; background: var(--accent);">🎨 Edit in Studio →</a>
+      </div>
     </div>
 
     <section class="guide-section">
-      <h2>How to Open a PSD File Online in 3 Steps</h2>
-      <ol>
-        <li><strong>Step 1:</strong> Click the button above to launch the <strong>FreePS Editor</strong> workspace.</li>
-        <li><strong>Step 2:</strong> Go to <strong>File -> Open</strong> in the top menu, or simply drag and drop your .PSD file directly onto the canvas.</li>
-        <li><strong>Step 3:</strong> Inspect the graphic layers in the right-hand panel, make brush or color adjustments, and export to PNG or JPG via <strong>File -> Save</strong>.</li>
-      </ol>
+      <h2>Supported PSD Technical Specifications</h2>
+      <p>
+        Our in-browser <code>8BPS</code> binary parser reads the header, color mode blocks, layer records, and RLE PackBits compressed image channels directly in WebAssembly/JavaScript memory:
+      </p>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Specification</th>
+            <th>Supported Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Input Formats</strong></td>
+            <td>Adobe Photoshop <code>.PSD</code> (Version 1) &amp; Large Document <code>.PSB</code> (Version 2)</td>
+          </tr>
+          <tr>
+            <td><strong>Color Modes</strong></td>
+            <td>RGB Color, CMYK Color (automatic RGB conversion), Grayscale</td>
+          </tr>
+          <tr>
+            <td><strong>Export Formats</strong></td>
+            <td>Lossless PNG (24-bit/32-bit with alpha), High-Quality JPEG, Modern WEBP</td>
+          </tr>
+          <tr>
+            <td><strong>Privacy &amp; Security</strong></td>
+            <td>100% Local Browser Execution (`FileReader` + `DataView`) — files never leave your device</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="guide-section">
-      <h2>Why Use FreePS Instead of Expensive Software?</h2>
+      <h2>When to Use PNG vs. JPG vs. WEBP When Converting PSDs</h2>
       <p>
-        Adobe Photoshop requires a monthly Creative Cloud subscription and gigabytes of disk space. For quick tasks—such as verifying client PSD files, extracting graphics, or checking layout layers—FreePS provides an instant, zero-cost alternative.
+        <strong>PNG (Portable Network Graphics):</strong> Best for UI mockups, logos, icons, and PSD files containing transparent backgrounds or sharp typography where lossless pixel accuracy is required.
       </p>
       <p>
-        Because all file parsing happens directly within your local browser's memory, sensitive client PSD designs are never transmitted over the internet, ensuring complete confidentiality.
-      </p>
-    </section>
-
-    <section class="guide-section">
-      <h2>Convert a PSD to PNG or JPG</h2>
-      <p>
-        After the PSD opens, keep the layers you want visible and use <strong>File -> Save</strong> in the editor to export PNG, JPG or WEBP. For a transparent logo or UI element, hide the other layers before exporting PNG. The detailed workflow is in our <a href="/psd-to-png" style="color: #60a5fa;">PSD to PNG converter guide</a>.
+        <strong>JPG (Joint Photographic Experts Group):</strong> Ideal for photographic compositions, digital paintings, and print-ready posters where compact file size is preferred and transparency is not needed.
       </p>
       <p>
-        If privacy is your main concern, see how the <a href="/psd-viewer-no-upload" style="color: #60a5fa;">no-upload PSD viewer</a> keeps files on your device. On a phone, use the <a href="/open-psd-on-iphone" style="color: #60a5fa;">iPhone PSD guide</a> for quick viewing and simple exports.
-      </p>
-    </section>
-
-    <section class="guide-section">
-      <h2>Frequently Asked Questions</h2>
-      <p><strong>Q: How do I open a PSD file without Adobe Photoshop?</strong></p>
-      <p>Click 'Open PSD in FreePS Editor', drag and drop your .PSD file into the canvas, then inspect the layers in the right-hand panel. No software installation is required.</p>
-      <p><strong>Q: Are my PSD files uploaded to a server?</strong></p>
-      <p>No. freePS parses PSD files locally in your browser memory, which makes it safer for client work and private designs.</p>
-      <p><strong>Q: Can I export my PSD file to PNG or JPG?</strong></p>
-      <p>Yes. Once the file is open, go to <strong>File -> Save</strong> to export PNG, JPG or WEBP. Hide unwanted layers first if you only need one asset.</p>
-      <p><strong>Q: Can I view individual PSD layers?</strong></p>
-      <p>Yes. The Layers panel lets you show or hide layers and inspect how the composition is built before you edit or export it.</p>
-      <p><strong>Q: What if my PSD looks different or will not open?</strong></p>
-      <p>Very large files can exceed browser memory, and complex smart objects, adjustment layers or missing fonts may render differently outside Photoshop. Try a desktop browser, close other tabs, or use desktop software for final print production.</p>
-    </section>
-
-    <section class="guide-section">
-      <h2>Related PSD Tools</h2>
-      <p>
-        <a href="/psd-to-png" style="color: #60a5fa;">PSD to PNG Converter</a> ·
-        <a href="/open-psd-without-photoshop" style="color: #60a5fa;">How to Open a PSD Without Photoshop</a> ·
-        <a href="/psd-viewer-no-upload" style="color: #60a5fa;">Private No-Upload PSD Viewer</a> ·
-        <a href="/open-psd-on-iphone" style="color: #60a5fa;">Open PSD on iPhone</a>
+        <strong>WEBP:</strong> Recommended for modern websites and e-commerce product graphics, delivering both alpha transparency and 30%+ smaller file sizes compared to PNG.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 FreePS (psdrawing.com). All rights reserved.</p>
+    <p>© 2026 freePS (psdrawing.com). All rights reserved.</p>
     <p style="margin-top: 8px;">
-      <a href="/" style="color: #60a5fa; margin: 0 10px;">Home</a> |
-      <a href="/editor" style="color: #60a5fa; margin: 0 10px;">Editor</a> |
-      <a href="/psd-to-png" style="color: #60a5fa; margin: 0 10px;">PSD to PNG</a> |
-      <a href="/open-psd-without-photoshop" style="color: #60a5fa; margin: 0 10px;">Guide</a> |
+      <a href="/" style="color: #60a5fa; margin: 0 10px;">Home (PSD Viewer)</a> |
+      <a href="/editor" style="color: #60a5fa; margin: 0 10px;">Online Editor</a> |
       <a href="/privacy" style="margin: 0 10px;">Privacy Policy</a> |
       <a href="/terms" style="margin: 0 10px;">Terms of Service</a>
     </p>
   </footer>
 
+  <script>
+
+// Built-in Client-Side Adobe PSD (8BPS) Binary Parser & Preview Renderer
+const PSDParser = {
+  parse(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+    if (magic !== '8BPS') {
+      throw new Error('Not a valid PSD file (missing 8BPS signature).');
+    }
+    const version = view.getUint16(4, false);
+    if (version !== 1 && version !== 2) {
+      throw new Error('Unsupported PSD version: ' + version);
+    }
+    const channels = view.getUint16(12, false);
+    const height = view.getUint32(14, false);
+    const width = view.getUint32(18, false);
+    const depth = view.getUint16(22, false);
+    const colorMode = view.getUint16(24, false);
+    const colorModes = {
+      0: 'Bitmap', 1: 'Grayscale', 2: 'Indexed', 3: 'RGB',
+      4: 'CMYK', 7: 'Multichannel', 8: 'Duotone', 9: 'Lab'
+    };
+
+    let offset = 26;
+    // 1. Color Mode Data Section
+    const colorDataLen = view.getUint32(offset, false);
+    offset += 4 + colorDataLen;
+
+    // 2. Image Resources Section
+    const imgResLen = view.getUint32(offset, false);
+    offset += 4 + imgResLen;
+
+    // 3. Layer and Mask Information Section
+    const isPSB = (version === 2);
+    let layerAndMaskLen = 0;
+    if (isPSB) {
+      layerAndMaskLen = Number(view.getBigUint64(offset, false));
+      offset += 8;
+    } else {
+      layerAndMaskLen = view.getUint32(offset, false);
+      offset += 4;
+    }
+    const layerSectionEnd = offset + layerAndMaskLen;
+
+    // Extract layer count & layer names if available
+    const layers = [];
+    try {
+      if (layerAndMaskLen > 0) {
+        let lOffset = offset;
+        let layerInfoLen = isPSB ? Number(view.getBigUint64(lOffset, false)) : view.getUint32(lOffset, false);
+        lOffset += isPSB ? 8 : 4;
+        if (layerInfoLen > 0 && lOffset + 2 <= layerSectionEnd) {
+          let layerCount = view.getInt16(lOffset, false);
+          lOffset += 2;
+          const absCount = Math.abs(layerCount);
+          for (let i = 0; i < absCount && lOffset < layerSectionEnd; i++) {
+            const top = view.getInt32(lOffset, false);
+            const left = view.getInt32(lOffset + 4, false);
+            const bottom = view.getInt32(lOffset + 8, false);
+            const right = view.getInt32(lOffset + 12, false);
+            const numCh = view.getUint16(lOffset + 16, false);
+            lOffset += 18 + numCh * (isPSB ? 10 : 6);
+            lOffset += 12; // blend mode sig + key + opacity + clipping + flags + filler
+            const extraLen = view.getUint32(lOffset, false);
+            lOffset += 4;
+            const extraEnd = lOffset + extraLen;
+            // Skip mask data and blending ranges
+            const maskLen = view.getUint32(lOffset, false);
+            lOffset += 4 + maskLen;
+            const blendLen = view.getUint32(lOffset, false);
+            lOffset += 4 + blendLen;
+            // Pascal string: layer name
+            const nameLen = view.getUint8(lOffset);
+            let name = '';
+            for (let c = 0; c < nameLen; c++) {
+              name += String.fromCharCode(view.getUint8(lOffset + 1 + c));
+            }
+            layers.push({
+              name: name || ('Layer ' + (i + 1)),
+              width: Math.max(0, right - left),
+              height: Math.max(0, bottom - top)
+            });
+            lOffset = extraEnd;
+          }
+        }
+      }
+    } catch (e) {
+      // Ignore non-critical layer list parsing errors and proceed to composite image
+    }
+
+    offset = layerSectionEnd;
+
+    // 4. Merged Composite Image Data Section
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(width, height);
+    const out = imgData.data;
+
+    if (offset < view.byteLength && depth === 8 && (colorMode === 3 || colorMode === 1 || colorMode === 4)) {
+      const compression = view.getUint16(offset, false);
+      offset += 2;
+      const numPixels = width * height;
+      const chData = [];
+      const readChannels = Math.min(channels, 4);
+
+      if (compression === 0) {
+        // Raw uncompressed planar data
+        for (let ch = 0; ch < readChannels; ch++) {
+          chData[ch] = new Uint8Array(arrayBuffer, offset + ch * numPixels, numPixels);
+        }
+      } else if (compression === 1) {
+        // RLE PackBits compressed data
+        const rowCounts = [];
+        const totalRows = channels * height;
+        for (let r = 0; r < totalRows; r++) {
+          rowCounts.push(isPSB ? view.getUint32(offset, false) : view.getUint16(offset, false));
+          offset += isPSB ? 4 : 2;
+        }
+        let rIdx = 0;
+        for (let ch = 0; ch < channels; ch++) {
+          const buf = new Uint8Array(numPixels);
+          let p = 0;
+          for (let y = 0; y < height; y++) {
+            const byteCount = rowCounts[rIdx++];
+            const rowEnd = offset + byteCount;
+            while (offset < rowEnd && p < numPixels) {
+              let header = view.getInt8(offset++);
+              if (header >= 0) {
+                const count = header + 1;
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = view.getUint8(offset++);
+                }
+              } else if (header > -128) {
+                const count = 1 - header;
+                const val = view.getUint8(offset++);
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = val;
+                }
+              }
+            }
+            offset = rowEnd;
+          }
+          if (ch < readChannels) chData[ch] = buf;
+        }
+      }
+
+      if (chData.length > 0) {
+        for (let i = 0; i < numPixels; i++) {
+          const idx = i * 4;
+          if (colorMode === 3) {
+            out[idx] = chData[0] ? chData[0][i] : 0;
+            out[idx + 1] = chData[1] ? chData[1][i] : out[idx];
+            out[idx + 2] = chData[2] ? chData[2][i] : out[idx];
+            out[idx + 3] = (channels >= 4 && chData[3]) ? chData[3][i] : 255;
+          } else if (colorMode === 1) {
+            const g = chData[0][i];
+            out[idx] = g; out[idx + 1] = g; out[idx + 2] = g;
+            out[idx + 3] = (channels >= 2 && chData[1]) ? chData[1][i] : 255;
+          } else if (colorMode === 4 && chData.length >= 4) {
+            // CMYK in PSD is stored inverted (255 = 0% ink, 0 = 100% ink)
+            const c = chData[0][i] / 255;
+            const m = chData[1][i] / 255;
+            const y = chData[2][i] / 255;
+            const k = chData[3][i] / 255;
+            out[idx] = Math.round(255 * c * k);
+            out[idx + 1] = Math.round(255 * m * k);
+            out[idx + 2] = Math.round(255 * y * k);
+            out[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+
+    return {
+      width,
+      height,
+      channels,
+      depth,
+      colorModeName: colorModes[colorMode] || ('Mode ' + colorMode),
+      layers,
+      canvas
+    };
+  },
+
+  savePendingFile(name, dataUrl, width, height) {
+    try {
+      sessionStorage.setItem('freeps_pending_file', JSON.stringify({ name, dataUrl, width, height, ts: Date.now() }));
+    } catch (e) {
+      // Ignore quota errors for huge images
+    }
+  }
+};
+
+    let convCanvas = null;
+    let convBase = 'converted';
+
+    function processConvFile(file) {
+      if (!file) return;
+      const box = document.getElementById('inspectorBox');
+      const grid = document.getElementById('metaGrid');
+      const holder = document.getElementById('inspCanvasHolder');
+      convBase = file.name.replace(/\.[^/.]+$/, '') || 'converted';
+      box.style.display = 'block';
+      holder.innerHTML = '';
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const res = PSDParser.parse(e.target.result);
+          convCanvas = res.canvas;
+          holder.appendChild(res.canvas);
+          const layerNames = res.layers.length > 0 ? res.layers.slice(0, 6).map(l => l.name).join(', ') : 'Merged Composite';
+          grid.innerHTML = `
+            <div class="meta-cell"><span>File Name</span><strong>${file.name}</strong></div>
+            <div class="meta-cell"><span>Dimensions</span><strong>${res.width} × ${res.height} px</strong></div>
+            <div class="meta-cell"><span>Color Mode</span><strong>${res.colorModeName} (${res.depth}-bit)</strong></div>
+            <div class="meta-cell"><span>Channels / Layers</span><strong>${res.channels} Ch / ${res.layers.length || 1} Layers</strong></div>
+            <div class="meta-cell" style="grid-column: 1 / -1;"><span>Detected Layer Names</span><strong>${layerNames}</strong></div>
+          `;
+          PSDParser.savePendingFile(file.name, res.canvas.toDataURL('image/png'), res.width, res.height);
+        } catch (err) {
+          grid.innerHTML = `<div class="meta-cell" style="grid-column:1/-1;"><span>Status</span><strong>${err.message}</strong></div>`;
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function downloadConverted(mime, ext) {
+      if (!convCanvas) return;
+      const a = document.createElement('a');
+      a.href = convCanvas.toDataURL(mime, 0.92);
+      a.download = convBase + '.' + ext;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    document.getElementById('convFileInput').addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) processConvFile(e.target.files[0]);
+    });
+    const cdz = document.getElementById('convDropzone');
+    cdz.addEventListener('dragover', (e) => { e.preventDefault(); });
+    cdz.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processConvFile(e.dataTransfer.files[0]);
+      }
+    });
+  </script>
 </body>
 </html>
