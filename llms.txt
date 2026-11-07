@@ -1,0 +1,25 @@
+# freePS (psdrawing.com)
+
+> 100% free, client-side online PSD & PSB viewer, converter, and multi-layer photo editor. Open Adobe Photoshop (.PSD and .PSB) files directly in your web browser without installing software or uploading files to any server.
+
+freePS is a browser-based graphic utility and photo editing suite. Homepage: https://psdrawing.com/
+
+## Core Tools & Converters
+
+- [freePS Homepage - Online PSD Viewer & Photo Editor](https://psdrawing.com/): Drag-and-drop PSD/PSB viewer, quick exporter, and multi-layer graphics editor.
+- [PSD to PNG, JPG & WEBP Converter](https://psdrawing.com/psd-viewer): Convert Photoshop files to lossless PNG, JPG, or WEBP and inspect file headers.
+- [Convert PSD to PDF Online Free](https://psdrawing.com/psd-to-pdf): Client-side PSD to PDF document converter with zero server uploads.
+- [Extract & Inspect PSD Layers Online](https://psdrawing.com/extract-psd-layers): View embedded PSD layer names, dimensions, bit depth, and color modes.
+- [Online PSB Viewer (Large Document Format)](https://psdrawing.com/psb-viewer): Open Version 2 (64-bit) Adobe Photoshop .PSB files in the browser.
+- [freePS Multi-Layer Studio Workspace](https://psdrawing.com/editor): Full in-browser image editor with layers, brushes, filters, and clone stamp.
+
+## Format Guides & Comparisons
+
+- [Open PSD Without Photoshop](https://psdrawing.com/open-psd-without-photoshop)
+- [Open PSD on iPhone & iPad](https://psdrawing.com/open-psd-on-iphone)
+- [PSD to PNG Guide](https://psdrawing.com/psd-to-png)
+- [PSD to JPG Guide](https://psdrawing.com/psd-to-jpg)
+- [PSD to WEBP Guide](https://psdrawing.com/psd-to-webp)
+- [Client-Side No-Upload PSD Viewer](https://psdrawing.com/psd-viewer-no-upload)
+- [Photopea Alternative (Lightweight & Ad-Free)](https://psdrawing.com/photopea-alternative)
+- [Online PSD Viewer Comparison](https://psdrawing.com/psd-viewer-comparison)

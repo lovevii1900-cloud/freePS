@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Convert PSD to PDF Online Free - No Upload Client-Side Tool | freePS</title>
+  <meta name="description" content="Convert Adobe Photoshop (.PSD) files to print-ready PDF documents online for free. 100% client-side browser conversion with zero server uploads or file size limits." />
+  <meta name="keywords" content="psd to pdf, convert psd to pdf online free, photoshop to pdf converter, save psd as pdf without photoshop" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" sizes="192x192" href="images/favicon.png" />
+  <link rel="canonical" href="https://psdrawing.com/psd-to-pdf" />
+
+  <meta property="og:title" content="Convert PSD to PDF Online Free - No Upload Client-Side Tool | freePS" />
+  <meta property="og:description" content="Convert Adobe Photoshop (.PSD) files to print-ready PDF documents online for free. 100% client-side browser conversion with zero server uploads or file size limits." />
+  <meta property="og:url" content="https://psdrawing.com/psd-to-pdf" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://psdrawing.com/images/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Convert PSD to PDF Online Free - No Upload Client-Side Tool | freePS" />
+  <meta name="twitter:description" content="Convert Adobe Photoshop (.PSD) files to print-ready PDF documents online for free. 100% client-side browser conversion with zero server uploads or file size limits." />
+  <meta name="twitter:image" content="https://psdrawing.com/images/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I convert a PSD file to PDF without Photoshop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Drop your .PSD file into the converter box on psdrawing.com/psd-to-pdf. Our browser engine renders the high-resolution composite canvas locally and packages it into a standard PDF 1.4 document with one click."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my PSD file uploaded to a server during PDF conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Unlike traditional cloud converters that upload your files to remote servers, freePS converts your PSD to PDF entirely inside your local browser memory."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1e29;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --success: #10b981;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #2e3444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo { font-size: 20px; font-weight: 700; color: #fff; }
+    .logo span { color: var(--accent); }
+    nav a { color: var(--text-muted); font-size: 14px; margin-left: 18px; }
+    nav a:hover { color: #fff; }
+    .content-wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
+    .badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    h1 { font-size: 36px; line-height: 1.25; font-weight: 800; margin-bottom: 14px; color: #fff; }
+    .lead { font-size: 17px; color: var(--text-muted); margin-bottom: 28px; }
+    .cta-area {
+      background: var(--card-bg);
+      border: 2px dashed #3b82f6;
+      border-radius: 14px;
+      padding: 36px 24px;
+      text-align: center;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cta-area:hover { border-color: #60a5fa; background: rgba(59, 130, 246, 0.06); }
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .inspector-box {
+      display: none;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .meta-cell {
+      background: #12151e;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .meta-cell span { display: block; font-size: 12px; color: var(--text-muted); }
+    .meta-cell strong { font-size: 15px; color: #fff; }
+    .canvas-holder {
+      background: repeating-conic-gradient(#222632 0% 25%, #181b24 0% 50%) 50% / 20px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      max-height: 440px;
+      overflow: auto;
+      margin-bottom: 18px;
+    }
+    .canvas-holder canvas { max-width: 100%; max-height: 400px; height: auto; }
+    .export-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .btn-dl {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      background: var(--success);
+    }
+    .btn-dl.secondary { background: #283044; border: 1px solid #3e4863; }
+    .guide-section { margin-bottom: 40px; }
+    .guide-section h2 {
+      font-size: 23px;
+      color: #fff;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .guide-section p { color: var(--text-muted); margin-bottom: 14px; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 60px;
+    }
+    .footer-links a { color: var(--text-muted); margin: 0 8px; }
+    .footer-links a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">🎨 free<span>PS</span></a>
+    <nav>
+      <a href="/">← Home</a>
+      <a href="/psd-viewer">PSD Converter</a>
+      <a href="/psd-to-pdf">PSD to PDF</a>
+      <a href="/psb-viewer">PSB Viewer</a>
+      <a href="/editor" style="color: var(--accent); font-weight: 600;">Full Studio →</a>
+    </nav>
+  </header>
+
+  <main class="content-wrap">
+    <div class="badge">📄 Instant PSD to PDF Converter</div>
+    <h1>Convert PSD to PDF Online Free (No File Upload)</h1>
+    <p class="lead">Turn Adobe Photoshop (.PSD) and Large Document (.PSB) files into clean, shareable PDF documents right inside your browser—without installing Photoshop or uploading sensitive client designs to a cloud server.</p>
+
+    <input type="file" id="toolFileInput" accept=".psd,.psb,image/*" style="display:none" />
+    <div class="cta-area" id="toolDropzone" onclick="document.getElementById('toolFileInput').click()">
+      <h3 style="font-size: 20px; color: #fff; margin-bottom: 8px;">Drop Your .PSD File Here to Convert to PDF Instantly</h3>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">100% Client-Side Processing — Zero Server Uploads, Instant Browser Rendering.</p>
+      <button type="button" class="btn-main" onclick="event.stopPropagation(); document.getElementById('toolFileInput').click()">📁 Choose .PSD File to Convert to PDF</button>
+    </div>
+
+    <div class="inspector-box" id="inspectorBox">
+      <h3 style="color:#fff; margin-bottom: 14px;">Parsed File Structure &amp; Export Options</h3>
+      <div class="meta-grid" id="metaGrid"></div>
+      <div class="canvas-holder" id="inspCanvasHolder"></div>
+      <div class="export-row">
+        <button type="button" class="btn-dl" onclick="downloadPDF()">📄 Export as PDF</button>
+        <button type="button" class="btn-dl secondary" onclick="downloadImg('image/png', 'png')">⬇️ Export PNG</button>
+        <button type="button" class="btn-dl secondary" onclick="downloadImg('image/jpeg', 'jpg')">⬇️ Export JPG</button>
+        <button type="button" class="btn-dl secondary" onclick="downloadImg('image/webp', 'webp')">⬇️ Export WEBP</button>
+        <a href="/editor" class="btn-dl secondary" style="margin-left:auto; background: var(--accent);">🎨 Edit Layers in Studio →</a>
+      </div>
+    </div>
+
+    
+    <section class="guide-section">
+      <h2>Why Convert PSD to PDF Locally in Your Browser?</h2>
+      <p>
+        Design agencies, print shops, and freelancers frequently receive <code>.psd</code> source files that need to be reviewed by clients or printed without requiring an Adobe Creative Cloud license. Traditional online converters require uploading 50MB–200MB files to third-party servers, waiting in queues, and risking confidentiality.
+      </p>
+      <p>
+        With <strong>freePS PSD to PDF Converter</strong>, the entire decoding and PDF generation pipeline runs on your device's CPU in milliseconds. It preserves full resolution, converts CMYK or RGB channels accurately, and outputs a standalone PDF ready for email attachment or printing.
+      </p>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>© 2026 freePS (psdrawing.com). All rights reserved.</p>
+    <div class="footer-links" style="margin-top: 10px;">
+      <a href="/">PSD Viewer</a> |
+      <a href="/psd-to-pdf">PSD to PDF</a> |
+      <a href="/extract-psd-layers">Extract PSD Layers</a> |
+      <a href="/psb-viewer">PSB Viewer</a> |
+      <a href="/psd-to-png">PSD to PNG</a> |
+      <a href="/psd-to-jpg">PSD to JPG</a> |
+      <a href="/open-psd-without-photoshop">Open PSD Without Photoshop</a> |
+      <a href="/editor">Online Editor</a>
+    </div>
+  </footer>
+
+  <script>
+
+// Built-in Client-Side Adobe PSD (8BPS) Binary Parser & Preview Renderer
+const PSDParser = {
+  parse(arrayBuffer) {
+    const view = new DataView(arrayBuffer);
+    const magic = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+    if (magic !== '8BPS') {
+      throw new Error('Not a valid PSD file (missing 8BPS signature).');
+    }
+    const version = view.getUint16(4, false);
+    if (version !== 1 && version !== 2) {
+      throw new Error('Unsupported PSD version: ' + version);
+    }
+    const channels = view.getUint16(12, false);
+    const height = view.getUint32(14, false);
+    const width = view.getUint32(18, false);
+    const depth = view.getUint16(22, false);
+    const colorMode = view.getUint16(24, false);
+    const colorModes = {
+      0: 'Bitmap', 1: 'Grayscale', 2: 'Indexed', 3: 'RGB',
+      4: 'CMYK', 7: 'Multichannel', 8: 'Duotone', 9: 'Lab'
+    };
+
+    let offset = 26;
+    const colorDataLen = view.getUint32(offset, false);
+    offset += 4 + colorDataLen;
+    const imgResLen = view.getUint32(offset, false);
+    offset += 4 + imgResLen;
+
+    const isPSB = (version === 2);
+    let layerAndMaskLen = 0;
+    if (isPSB) {
+      layerAndMaskLen = Number(view.getBigUint64(offset, false));
+      offset += 8;
+    } else {
+      layerAndMaskLen = view.getUint32(offset, false);
+      offset += 4;
+    }
+    const layerSectionEnd = offset + layerAndMaskLen;
+
+    const layers = [];
+    try {
+      if (layerAndMaskLen > 0) {
+        let lOffset = offset;
+        let layerInfoLen = isPSB ? Number(view.getBigUint64(lOffset, false)) : view.getUint32(lOffset, false);
+        lOffset += isPSB ? 8 : 4;
+        if (layerInfoLen > 0 && lOffset + 2 <= layerSectionEnd) {
+          let layerCount = view.getInt16(lOffset, false);
+          lOffset += 2;
+          const absCount = Math.abs(layerCount);
+          for (let i = 0; i < absCount && lOffset < layerSectionEnd; i++) {
+            const top = view.getInt32(lOffset, false);
+            const left = view.getInt32(lOffset + 4, false);
+            const bottom = view.getInt32(lOffset + 8, false);
+            const right = view.getInt32(lOffset + 12, false);
+            const numCh = view.getUint16(lOffset + 16, false);
+            lOffset += 18 + numCh * (isPSB ? 10 : 6);
+            lOffset += 12;
+            const extraLen = view.getUint32(lOffset, false);
+            lOffset += 4;
+            const extraEnd = lOffset + extraLen;
+            const maskLen = view.getUint32(lOffset, false);
+            lOffset += 4 + maskLen;
+            const blendLen = view.getUint32(lOffset, false);
+            lOffset += 4 + blendLen;
+            const nameLen = view.getUint8(lOffset);
+            let name = '';
+            for (let c = 0; c < nameLen; c++) {
+              name += String.fromCharCode(view.getUint8(lOffset + 1 + c));
+            }
+            layers.push({
+              name: name || ('Layer ' + (i + 1)),
+              width: Math.max(0, right - left),
+              height: Math.max(0, bottom - top)
+            });
+            lOffset = extraEnd;
+          }
+        }
+      }
+    } catch (e) {}
+
+    offset = layerSectionEnd;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(width, height);
+    const out = imgData.data;
+
+    if (offset < view.byteLength && depth === 8 && (colorMode === 3 || colorMode === 1 || colorMode === 4)) {
+      const compression = view.getUint16(offset, false);
+      offset += 2;
+      const numPixels = width * height;
+      const chData = [];
+      const readChannels = Math.min(channels, 4);
+
+      if (compression === 0) {
+        for (let ch = 0; ch < readChannels; ch++) {
+          chData[ch] = new Uint8Array(arrayBuffer, offset + ch * numPixels, numPixels);
+        }
+      } else if (compression === 1) {
+        const rowCounts = [];
+        const totalRows = channels * height;
+        for (let r = 0; r < totalRows; r++) {
+          rowCounts.push(isPSB ? view.getUint32(offset, false) : view.getUint16(offset, false));
+          offset += isPSB ? 4 : 2;
+        }
+        let rIdx = 0;
+        for (let ch = 0; ch < channels; ch++) {
+          const buf = new Uint8Array(numPixels);
+          let p = 0;
+          for (let y = 0; y < height; y++) {
+            const byteCount = rowCounts[rIdx++];
+            const rowEnd = offset + byteCount;
+            while (offset < rowEnd && p < numPixels) {
+              let header = view.getInt8(offset++);
+              if (header >= 0) {
+                const count = header + 1;
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = view.getUint8(offset++);
+                }
+              } else if (header > -128) {
+                const count = 1 - header;
+                const val = view.getUint8(offset++);
+                for (let k = 0; k < count && p < numPixels; k++) {
+                  buf[p++] = val;
+                }
+              }
+            }
+            offset = rowEnd;
+          }
+          if (ch < readChannels) chData[ch] = buf;
+        }
+      }
+
+      if (chData.length > 0) {
+        for (let i = 0; i < numPixels; i++) {
+          const idx = i * 4;
+          if (colorMode === 3) {
+            out[idx] = chData[0] ? chData[0][i] : 0;
+            out[idx + 1] = chData[1] ? chData[1][i] : out[idx];
+            out[idx + 2] = chData[2] ? chData[2][i] : out[idx];
+            out[idx + 3] = (channels >= 4 && chData[3]) ? chData[3][i] : 255;
+          } else if (colorMode === 1) {
+            const g = chData[0][i];
+            out[idx] = g; out[idx + 1] = g; out[idx + 2] = g;
+            out[idx + 3] = (channels >= 2 && chData[1]) ? chData[1][i] : 255;
+          } else if (colorMode === 4 && chData.length >= 4) {
+            const c = chData[0][i] / 255;
+            const m = chData[1][i] / 255;
+            const y = chData[2][i] / 255;
+            const k = chData[3][i] / 255;
+            out[idx] = Math.round(255 * c * k);
+            out[idx + 1] = Math.round(255 * m * k);
+            out[idx + 2] = Math.round(255 * y * k);
+            out[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+
+    return {
+      width,
+      height,
+      channels,
+      depth,
+      colorModeName: colorModes[colorMode] || ('Mode ' + colorMode),
+      layers,
+      canvas
+    };
+  },
+
+  savePendingFile(name, dataUrl, width, height) {
+    try {
+      sessionStorage.setItem('freeps_pending_file', JSON.stringify({ name, dataUrl, width, height, ts: Date.now() }));
+    } catch (e) {}
+  }
+};
+
+
+function downloadCanvasAsPDF(canvas, filename) {
+  if (!canvas) return;
+  const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.92);
+  const base64 = jpegDataUrl.split(',')[1];
+  const binStr = atob(base64);
+  const imgBytes = new Uint8Array(binStr.length);
+  for (let i = 0; i < binStr.length; i++) imgBytes[i] = binStr.charCodeAt(i);
+
+  const w = canvas.width;
+  const h = canvas.height;
+  const maxPt = 842;
+  const scale = Math.min(1, maxPt / Math.max(w, h));
+  const ptW = Math.round(w * scale);
+  const ptH = Math.round(h * scale);
+
+  const parts = [];
+  const offsets = [];
+  let byteLen = 0;
+  function addStr(s) {
+    const arr = new TextEncoder().encode(s);
+    parts.push(arr);
+    byteLen += arr.length;
+  }
+  function addBytes(b) {
+    parts.push(b);
+    byteLen += b.length;
+  }
+  function markObj() {
+    offsets.push(byteLen);
+  }
+
+  addStr("%PDF-1.4\n");
+  markObj();
+  addStr("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+  markObj();
+  addStr("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+  markObj();
+  addStr(`3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n`);
+  markObj();
+  addStr(`4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imgBytes.length} >>\nstream\n`);
+  addBytes(imgBytes);
+  addStr("\nendstream\nendobj\n");
+  const contentStream = `q ${ptW} 0 0 ${ptH} 0 0 cm /Im0 Do Q`;
+  markObj();
+  addStr(`5 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}\nendstream\nendobj\n`);
+
+  const xrefStart = byteLen;
+  addStr(`xref\n0 6\n0000000000 65535 f \n`);
+  for (let i = 0; i < offsets.length; i++) {
+    addStr(String(offsets[i]).padStart(10, '0') + " 00000 n \n");
+  }
+  addStr(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`);
+
+  const blob = new Blob(parts, { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+
+    let toolCanvas = null;
+    let toolBase = 'document';
+
+    function processToolFile(file) {
+      if (!file) return;
+      const box = document.getElementById('inspectorBox');
+      const grid = document.getElementById('metaGrid');
+      const holder = document.getElementById('inspCanvasHolder');
+      toolBase = file.name.replace(/\.[^/.]+$/, '') || 'document';
+      box.style.display = 'block';
+      holder.innerHTML = '';
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const res = PSDParser.parse(e.target.result);
+          toolCanvas = res.canvas;
+          holder.appendChild(res.canvas);
+          const layerList = res.layers.length > 0
+            ? res.layers.map((l, idx) => `${idx + 1}. ${l.name} (${l.width}×${l.height}px)`).join(' · ')
+            : 'Merged Composite Image';
+          grid.innerHTML = `
+            <div class="meta-cell"><span>File Name</span><strong>${file.name}</strong></div>
+            <div class="meta-cell"><span>Canvas Size</span><strong>${res.width} × ${res.height} px</strong></div>
+            <div class="meta-cell"><span>Color Mode</span><strong>${res.colorModeName} (${res.depth}-bit)</strong></div>
+            <div class="meta-cell"><span>Total Layers</span><strong>${res.layers.length || 1} Layers (${res.channels} Ch)</strong></div>
+            <div class="meta-cell" style="grid-column: 1 / -1;"><span>Extracted Layer Directory</span><strong>${layerList}</strong></div>
+          `;
+          PSDParser.savePendingFile(file.name, res.canvas.toDataURL('image/png'), res.width, res.height);
+        } catch (err) {
+          grid.innerHTML = `<div class="meta-cell" style="grid-column:1/-1;"><span>Status</span><strong>${err.message}</strong></div>`;
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function downloadImg(mime, ext) {
+      if (!toolCanvas) return;
+      const a = document.createElement('a');
+      a.href = toolCanvas.toDataURL(mime, 0.92);
+      a.download = toolBase + '.' + ext;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function downloadPDF() {
+      if (!toolCanvas) return;
+      downloadCanvasAsPDF(toolCanvas, toolBase + '.pdf');
+    }
+
+    document.getElementById('toolFileInput').addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) processToolFile(e.target.files[0]);
+    });
+    const tdz = document.getElementById('toolDropzone');
+    tdz.addEventListener('dragover', (e) => { e.preventDefault(); });
+    tdz.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processToolFile(e.dataTransfer.files[0]);
+      }
+    });
+  </script>
+</body>
+</html>
